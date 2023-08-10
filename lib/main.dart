@@ -1,10 +1,15 @@
 import 'package:e_commerce/core/constant/colors.dart';
+import 'package:e_commerce/core/localization/changelocal.dart';
+import 'package:e_commerce/core/localization/translation.dart';
+import 'package:e_commerce/core/services/services.dart';
 import 'package:e_commerce/routes.dart';
-import 'package:e_commerce/view/screens/onboardingscreen.dart';
+import 'package:e_commerce/view/screens/languagescreen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await initialservices();
   runApp(const MyApp());
 }
 
@@ -13,15 +18,18 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    LanguageController languageController = Get.put(LanguageController());
     return GetMaterialApp(
+      locale: languageController.langauge,
+      translations: MyTranslations(),
       theme: ThemeData(
           fontFamily: "crimson",
           textTheme: const TextTheme(
-            displayLarge: TextStyle(color: Appcolors.primarycolor, fontWeight: FontWeight.bold, fontSize: 25),
-            bodyLarge: TextStyle(color: Appcolors.grey, fontSize: 16, wordSpacing: 3, height: 1.4),
-          )),
+              displayLarge: TextStyle(color: Appcolors.primarycolor, fontWeight: FontWeight.bold, fontSize: 30),
+              bodyLarge: TextStyle(color: Appcolors.grey, fontSize: 18, wordSpacing: 3, height: 1.4),
+              labelLarge: TextStyle(color: Appcolors.white, fontSize: 22))),
       debugShowCheckedModeBanner: false,
-      home: const OnBoardingScreen(),
+      home: const LanguageScreen(),
       getPages: routes,
     );
   }
