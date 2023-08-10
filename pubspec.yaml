@@ -121,6 +121,18 @@ flutter:
         - asset: assets/fonts/cairo/Cairo-Regular.ttf
         - asset: assets/fonts/cairo/Cairo-Bold.ttf
           weight: 700
+
+    - family: crimson
+      fonts:
+        - asset: assets/fonts/crimson/CrimsonText-Regular.ttf
+        - asset: assets/fonts/crimson/CrimsonText-Bold.ttf
+          weight: 700
+
+    - family: dancing
+      fonts:
+        - asset: assets/fonts/dancing/DancingScript-Regular.ttf
+        - asset: assets/fonts/dancing/DancingScript-Bold.ttf
+          weight: 700
   #         style: italic
   #   - family: Trajan Pro
   #     fonts:

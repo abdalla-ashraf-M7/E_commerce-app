@@ -17,7 +17,7 @@ class CustomButtonOnBoarding extends StatelessWidget {
         child: ElevatedButton(
             style: ButtonStyle(
                 shape: MaterialStateProperty.all<RoundedRectangleBorder>(RoundedRectangleBorder(borderRadius: BorderRadius.circular(20))),
-                backgroundColor: const MaterialStatePropertyAll(appcolors.primarycolor)),
+                backgroundColor: const MaterialStatePropertyAll(Appcolors.primarycolor)),
             onPressed: () {
               controller.next();
             },

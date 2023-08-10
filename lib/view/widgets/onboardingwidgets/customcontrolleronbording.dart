@@ -20,8 +20,8 @@ class CustomControllerOnBoarding extends StatelessWidget {
                     margin: const EdgeInsets.only(right: 6),
                     width: index == controller.pagenumber ? 20 : 5,
                     height: 5,
-                    decoration: BoxDecoration(color: appcolors.primarycolor, borderRadius: BorderRadius.circular(10)),
-                    duration: const Duration(milliseconds: 900)))
+                    decoration: BoxDecoration(color: Appcolors.primarycolor, borderRadius: BorderRadius.circular(10)),
+                    duration: const Duration(milliseconds: 600)))
           ],
         );
       },

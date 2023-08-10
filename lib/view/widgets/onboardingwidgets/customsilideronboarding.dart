@@ -1,7 +1,6 @@
 import 'package:e_commerce/controller/onboardingcontroller.dart';
 import 'package:e_commerce/data/datasource/static/static.dart';
 import 'package:flutter/material.dart';
-import 'package:e_commerce/core/constant/colors.dart';
 import 'package:get/get.dart';
 
 class CustomSliderOnBOarding extends GetView<OnBoardingControllerImp> {
@@ -19,7 +18,7 @@ class CustomSliderOnBOarding extends GetView<OnBoardingControllerImp> {
               children: [
                 Text(
                   "${onboardingdatasource[i].title}",
-                  style: const TextStyle(color: appcolors.primarycolor, fontWeight: FontWeight.bold, fontSize: 25),
+                  style: Theme.of(context).textTheme.displayLarge,
                 ),
                 const SizedBox(
                   height: 10,
@@ -27,7 +26,7 @@ class CustomSliderOnBOarding extends GetView<OnBoardingControllerImp> {
                 Text(
                   textAlign: TextAlign.center,
                   "${onboardingdatasource[i].body}",
-                  style: const TextStyle(color: appcolors.grey, fontSize: 16, wordSpacing: 3, height: 1.4),
+                  style: Theme.of(context).textTheme.bodyLarge,
                 ),
                 const SizedBox(
                   height: 50,
