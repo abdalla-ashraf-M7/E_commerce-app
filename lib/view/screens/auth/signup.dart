@@ -1,20 +1,18 @@
-import 'package:e_commerce/controller/auth/logincontroller.dart';
+import 'package:e_commerce/controller/auth/signupcontroller.dart';
 import 'package:e_commerce/core/constant/colors.dart';
-import 'package:e_commerce/core/constant/imageassets.dart';
 import 'package:e_commerce/view/widgets/authwidgets/custombodyauth.dart';
 import 'package:e_commerce/view/widgets/authwidgets/custombuttonauth.dart';
-import 'package:e_commerce/view/widgets/authwidgets/customforgetpassauth.dart';
 import 'package:e_commerce/view/widgets/authwidgets/customrowsignupauth.dart';
 import 'package:e_commerce/view/widgets/authwidgets/customtextformauth.dart';
-import 'package:e_commerce/view/widgets/authwidgets/customtitleauth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class LogInScreen extends StatelessWidget {
-  const LogInScreen({super.key});
+class SignUpScreen extends StatelessWidget {
+  const SignUpScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
-    LogInControllerImp controller = Get.put(LogInControllerImp());
+    SignUpControllerImp controller = Get.put(SignUpControllerImp());
     return Scaffold(
       backgroundColor: Appcolors.white,
       appBar: AppBar(
@@ -22,7 +20,7 @@ class LogInScreen extends StatelessWidget {
         elevation: 0.0,
         centerTitle: true,
         title: Text(
-          "Log in",
+          "Sign Up",
           style: Theme.of(context).textTheme.displayLarge,
         ),
       ),
@@ -32,29 +30,25 @@ class LogInScreen extends StatelessWidget {
         child: ListView(
           children: [
             const SizedBox(
+              height: 70,
+            ),
+            const CustomBodyAuth(body: "Sign Up With Your Email And Password OR Continue With Social Media"),
+            const SizedBox(
               height: 40,
             ),
-            Image.asset(
-              Appimageassets.logo,
-              height: 170,
-            ),
-            const SizedBox(
-              height: 30,
-            ),
-            const CustomTitleAuth(
-              title: 'Welcome Back',
-            ),
-            const SizedBox(
-              height: 30,
-            ),
-            const CustomBodyAuth(body: "Log In With Your Email And Password OR Continue With Social Media"),
-            const SizedBox(
-              height: 30,
-            ),
             Form(
-                key: controller.loginformstate,
+                key: controller.signupformstate,
                 child: Column(
                   children: [
+                    CustomTextFormAuth(
+                      hint: "Enter Your Username",
+                      label: "Username",
+                      icon: Icons.person,
+                      textformcontroller: controller.username,
+                    ),
+                    const SizedBox(
+                      height: 30,
+                    ),
                     CustomTextFormAuth(
                       hint: "Enter Your Email",
                       label: "Email",
@@ -62,7 +56,16 @@ class LogInScreen extends StatelessWidget {
                       textformcontroller: controller.email,
                     ),
                     const SizedBox(
-                      height: 20,
+                      height: 30,
+                    ),
+                    CustomTextFormAuth(
+                      hint: "Enter Your Phone",
+                      label: "Phone",
+                      icon: Icons.phone_android,
+                      textformcontroller: controller.phone,
+                    ),
+                    const SizedBox(
+                      height: 30,
                     ),
                     CustomTextFormAuth(
                       hint: "Enter Your Password",
@@ -73,21 +76,17 @@ class LogInScreen extends StatelessWidget {
                   ],
                 )),
             const SizedBox(
-              height: 20,
-            ),
-            const CustomForgetAuth(),
-            const SizedBox(
-              height: 20,
+              height: 40,
             ),
             const CustomButtonAuth(text: "Continue"),
             const SizedBox(
-              height: 40,
+              height: 60,
             ),
             CustomRowSignAuth(
-              text1: "Don't Have An Account?",
-              text2: " Sign Up",
+              text1: " Have An Account?",
+              text2: " Log In",
               tap: () {
-                controller.gotosignup();
+                controller.gotologin();
               },
             )
           ],
