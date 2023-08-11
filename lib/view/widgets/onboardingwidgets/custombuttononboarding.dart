@@ -22,7 +22,7 @@ class CustomButtonOnBoarding extends StatelessWidget {
               controller.next();
             },
             child: Text(
-              controller.pagenumber == onboardingdatasource.length - 1 ? "Log In" : "Continue",
+              controller.pagenumber == onboardingdatasource.length - 1 ? "9".tr : "8".tr,
               style: Theme.of(context).textTheme.labelLarge,
             )),
       ),

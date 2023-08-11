@@ -21,7 +21,7 @@ class SignUpScreen extends StatelessWidget {
         elevation: 0.0,
         centerTitle: true,
         title: Text(
-          "Sign Up",
+          "18".tr,
           style: Theme.of(context).textTheme.displayLarge!.copyWith(color: Appcolors.grey2),
         ),
       ),
@@ -31,38 +31,38 @@ class SignUpScreen extends StatelessWidget {
         child: ListView(
           children: [
             const SizedBox(height: 20),
-            const CustomTitleAuth(title: "Welcome"),
+            CustomTitleAuth(title: "19".tr),
             const SizedBox(height: 20),
-            const CustomBodyAuth(body: "Sign Up With Your Email And Password OR Continue With Social Media"),
+            CustomBodyAuth(body: "20".tr),
             const SizedBox(height: 40),
             Form(
                 key: controller.signupformstate,
                 child: Column(
                   children: [
                     CustomTextFormAuth(
-                      hint: "Enter Your Username",
-                      label: "Username",
+                      hint: "22".tr,
+                      label: "21".tr,
                       icon: Icons.person,
                       textformcontroller: controller.username,
                     ),
                     const SizedBox(height: 30),
                     CustomTextFormAuth(
-                      hint: "Enter Your Email",
-                      label: "Email",
+                      hint: "14".tr,
+                      label: "13".tr,
                       icon: Icons.email_outlined,
                       textformcontroller: controller.email,
                     ),
                     const SizedBox(height: 30),
                     CustomTextFormAuth(
-                      hint: "Enter Your Phone",
-                      label: "Phone",
+                      hint: "24".tr,
+                      label: "23".tr,
                       icon: Icons.phone_android,
                       textformcontroller: controller.phone,
                     ),
                     const SizedBox(height: 30),
                     CustomTextFormAuth(
-                      hint: "Enter Your Password",
-                      label: "Password",
+                      hint: "14".tr,
+                      label: "15".tr,
                       icon: Icons.lock_outline,
                       textformcontroller: controller.password,
                     ),
@@ -70,15 +70,15 @@ class SignUpScreen extends StatelessWidget {
                 )),
             const SizedBox(height: 40),
             CustomButtonAuth(
-              text: "Continue",
+              text: "8".tr,
               tap: () {
                 controller.gotoverifyemailsignup();
               },
             ),
             const SizedBox(height: 20),
             CustomRowSignAuth(
-              text1: " Have An Account?",
-              text2: " Log In",
+              text1: "25".tr,
+              text2: "26".tr,
               tap: () {
                 controller.gotologin();
               },

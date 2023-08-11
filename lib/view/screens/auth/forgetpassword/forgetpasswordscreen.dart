@@ -23,7 +23,7 @@ class ForgetPasswordScreen extends StatelessWidget {
         elevation: 0.0,
         centerTitle: true,
         title: Text(
-          "Forget Password",
+          "35".tr,
           style: Theme.of(context).textTheme.displayLarge!.copyWith(color: Appcolors.grey2),
         ),
       ),
@@ -38,16 +38,16 @@ class ForgetPasswordScreen extends StatelessWidget {
               height: 100,
             ),
             const SizedBox(height: 20),
-            const CustomTitleAuth(title: "Check Your Email"),
+            CustomTitleAuth(title: "36".tr),
             const SizedBox(height: 20),
-            const CustomBodyAuth(body: "Enter Your Email And WE Immediatly Will Send You A Verification Code"),
+            CustomBodyAuth(body: "37".tr),
             const SizedBox(height: 30),
             Form(
                 child: Column(
               children: [
                 CustomTextFormAuth(
-                  hint: "Enter Your Email",
-                  label: "Chek Email",
+                  hint: "39".tr,
+                  label: "38".tr,
                   icon: Icons.email_outlined,
                   textformcontroller: controller.email,
                 ),
@@ -56,7 +56,7 @@ class ForgetPasswordScreen extends StatelessWidget {
             )),
             const SizedBox(height: 10),
             CustomButtonAuth(
-              text: "Send Conde",
+              text: "40".tr,
               tap: () {
                 Get.toNamed(Approutes.verifycode);
               },

@@ -22,7 +22,7 @@ class LogInScreen extends StatelessWidget {
         elevation: 0.0,
         centerTitle: true,
         title: Text(
-          "Log in",
+          "9".tr,
           style: Theme.of(context).textTheme.displayLarge!.copyWith(color: Appcolors.grey2),
         ),
       ),
@@ -34,26 +34,26 @@ class LogInScreen extends StatelessWidget {
             const SizedBox(height: 30),
             Image.asset(Appimageassets.newlogo, height: 100),
             const SizedBox(height: 30),
-            const CustomTitleAuth(
-              title: 'Welcome Back',
+            CustomTitleAuth(
+              title: '10'.tr,
             ),
             const SizedBox(height: 30),
-            const CustomBodyAuth(body: "Log In With Your Email And Password OR Continue With Social Media"),
+            CustomBodyAuth(body: "11".tr),
             const SizedBox(height: 30),
             Form(
                 key: controller.loginformstate,
                 child: Column(
                   children: [
                     CustomTextFormAuth(
-                      hint: "Enter Your Email",
-                      label: "Email",
+                      hint: "12".tr,
+                      label: "13".tr,
                       icon: Icons.email_outlined,
                       textformcontroller: controller.email,
                     ),
                     const SizedBox(height: 20),
                     CustomTextFormAuth(
-                      hint: "Enter Your Password",
-                      label: "Password",
+                      hint: "14".tr,
+                      label: "15".tr,
                       icon: Icons.lock_outline,
                       textformcontroller: controller.password,
                     ),
@@ -66,11 +66,11 @@ class LogInScreen extends StatelessWidget {
               },
             ),
             const SizedBox(height: 20),
-            const CustomButtonAuth(text: "Continue"),
+            CustomButtonAuth(text: "8".tr),
             const SizedBox(height: 20),
             CustomRowSignAuth(
-              text1: "Don't Have An Account?",
-              text2: " Sign Up",
+              text1: "17".tr,
+              text2: "18".tr,
               tap: () {
                 controller.gotosignup();
               },

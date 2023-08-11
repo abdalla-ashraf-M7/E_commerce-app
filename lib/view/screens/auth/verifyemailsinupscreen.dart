@@ -22,7 +22,7 @@ class VerifyEmailSignupScreen extends StatelessWidget {
         elevation: 0.0,
         centerTitle: true,
         title: Text(
-          "Almost Done",
+          "27".tr,
           style: Theme.of(context).textTheme.displayLarge!.copyWith(color: Appcolors.grey2),
         ),
       ),
@@ -37,9 +37,9 @@ class VerifyEmailSignupScreen extends StatelessWidget {
               height: 100,
             ),
             const SizedBox(height: 30),
-            const CustomTitleAuth(title: "Verify Your Email"),
+            CustomTitleAuth(title: "28".tr),
             const SizedBox(height: 20),
-            const CustomBodyAuth(body: "We Have Sent You An Email, Please Check It And Write The Code Below"),
+            CustomBodyAuth(body: "29".tr),
             const SizedBox(height: 30),
             OtpTextField(
               fieldWidth: 55,
@@ -59,7 +59,7 @@ class VerifyEmailSignupScreen extends StatelessWidget {
               }, // end onSubmit
             ),
             const SizedBox(height: 30),
-            CustomRowSignAuth(text1: "didn't recieve a code?", text2: " Resend Code", tap: () {})
+            CustomRowSignAuth(text1: "30".tr, text2: "31".tr, tap: () {})
           ],
         ),
       ),

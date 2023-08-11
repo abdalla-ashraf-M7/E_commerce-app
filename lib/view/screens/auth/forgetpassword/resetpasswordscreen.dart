@@ -22,7 +22,7 @@ class RessetPasswordScreen extends StatelessWidget {
         elevation: 0.0,
         centerTitle: true,
         title: Text(
-          "Email Verified",
+          "44".tr,
           style: Theme.of(context).textTheme.displayLarge!.copyWith(color: Appcolors.grey2),
         ),
       ),
@@ -38,23 +38,23 @@ class RessetPasswordScreen extends StatelessWidget {
               height: 100,
             ),
             const SizedBox(height: 30),
-            const CustomTitleAuth(title: "Resset Password"),
+            CustomTitleAuth(title: "45".tr),
             const SizedBox(height: 20),
-            const CustomBodyAuth(body: "Success Email Verification, Enter Your New Password "),
+            CustomBodyAuth(body: "46".tr),
             const SizedBox(height: 30),
             Form(
                 child: Column(
               children: [
                 CustomTextFormAuth(
-                  hint: "Enter Your Password",
-                  label: "New password",
+                  hint: "14".tr,
+                  label: "47".tr,
                   icon: Icons.lock_outline,
                   textformcontroller: controller.password1,
                 ),
                 const SizedBox(height: 30),
                 CustomTextFormAuth(
-                  hint: "Repeat Your Password",
-                  label: "New password",
+                  hint: "48".tr,
+                  label: "47".tr,
                   icon: Icons.lock_outline,
                   textformcontroller: controller.password1,
                 ),
@@ -63,7 +63,7 @@ class RessetPasswordScreen extends StatelessWidget {
             )),
             const SizedBox(height: 10),
             CustomButtonAuth(
-              text: "Save",
+              text: "49".tr,
               tap: () {
                 controller.gotosucessressetpassword();
               },

@@ -22,7 +22,7 @@ class VerifyCodeScreen extends StatelessWidget {
         elevation: 0.0,
         centerTitle: true,
         title: Text(
-          "Verify Code",
+          "41".tr,
           style: Theme.of(context).textTheme.displayLarge!.copyWith(color: Appcolors.grey2),
         ),
       ),
@@ -37,9 +37,9 @@ class VerifyCodeScreen extends StatelessWidget {
               height: 100,
             ),
             const SizedBox(height: 30),
-            const CustomTitleAuth(title: "Verify Your Email"),
+            CustomTitleAuth(title: "42".tr),
             const SizedBox(height: 20),
-            const CustomBodyAuth(body: "Chek Your Email And Enter The Code, Then You Can Resset Your Password"),
+            CustomBodyAuth(body: "43".tr),
             const SizedBox(height: 30),
             OtpTextField(
               fieldWidth: 55,
@@ -59,7 +59,7 @@ class VerifyCodeScreen extends StatelessWidget {
               }, // end onSubmit
             ),
             const SizedBox(height: 30),
-            CustomRowSignAuth(text1: "didn't recieve a code?", text2: " Resend Code", tap: () {})
+            CustomRowSignAuth(text1: "30".tr, text2: "31".tr, tap: () {})
           ],
         ),
       ),

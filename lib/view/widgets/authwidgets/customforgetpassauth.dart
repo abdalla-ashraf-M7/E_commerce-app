@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class CustomForgetAuth extends StatelessWidget {
   const CustomForgetAuth({super.key, this.tap});
@@ -11,7 +12,7 @@ class CustomForgetAuth extends StatelessWidget {
       child: InkWell(
         onTap: tap,
         child: Text(
-          "Forget Password?",
+          "16".tr,
           style: Theme.of(context).textTheme.bodyLarge,
           textAlign: TextAlign.end,
         ),

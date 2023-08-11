@@ -6,7 +6,7 @@ class CustomBodyAuth extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 35),
+      margin: EdgeInsets.symmetric(horizontal: 20),
       child: Text(
         body,
         style: Theme.of(context).textTheme.bodyLarge,

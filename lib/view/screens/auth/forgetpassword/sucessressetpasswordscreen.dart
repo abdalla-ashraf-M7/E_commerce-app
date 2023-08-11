@@ -18,8 +18,8 @@ class ScuccessRessetPasswordScreen extends StatelessWidget {
         elevation: 0.0,
         centerTitle: true,
         title: Text(
-          "RessetPassword Completed",
-          style: Theme.of(context).textTheme.displayLarge!.copyWith(color: Appcolors.grey2),
+          "50".tr,
+          style: Theme.of(context).textTheme.displayLarge!.copyWith(color: Appcolors.grey2, fontSize: 25),
         ),
       ),
       body: Container(
@@ -35,12 +35,12 @@ class ScuccessRessetPasswordScreen extends StatelessWidget {
               color: Appcolors.primarycolor,
             ),
             Text(
-              "Congratolations!!",
+              "33".tr,
               style: Theme.of(context).textTheme.displayLarge,
             ),
             const SizedBox(height: 30),
             Text(
-              "It Is Done! Now You Can LogIn Your Page And Have All Our Services, Again!",
+              "51".tr,
               style: Theme.of(context).textTheme.bodyLarge,
               textAlign: TextAlign.center,
             ),
@@ -48,7 +48,7 @@ class ScuccessRessetPasswordScreen extends StatelessWidget {
               flex: 1,
             ),
             CustomButtonAuth(
-              text: "Login",
+              text: "26".tr,
               tap: () {
                 controller.gotologin();
               },

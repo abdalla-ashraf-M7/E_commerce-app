@@ -30,7 +30,7 @@ class LanguageScreen extends GetView<LanguageController> {
                 height: 30,
               ),
               CustomButtonLanguage(
-                  text: "English",
+                  text: "2".tr,
                   press: () {
                     controller.changeLang("en");
                     Get.toNamed(Approutes.onboarding);
@@ -39,7 +39,7 @@ class LanguageScreen extends GetView<LanguageController> {
                 height: 30,
               ),
               CustomButtonLanguage(
-                  text: "Arabic",
+                  text: "3".tr,
                   press: () {
                     controller.changeLang("ar");
                     Get.toNamed(Approutes.onboarding);
