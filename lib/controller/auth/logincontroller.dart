@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 abstract class LogInController extends GetxController {
   login();
   gotosignup();
+  gotoforgetpassword();
 }
 
 class LogInControllerImp extends LogInController {
@@ -15,6 +16,11 @@ class LogInControllerImp extends LogInController {
   @override
   gotosignup() {
     Get.offAllNamed(Approutes.signup);
+  }
+
+  @override
+  gotoforgetpassword() {
+    Get.toNamed(Approutes.forgetpassword);
   }
 
   @override

@@ -4,7 +4,7 @@ import 'package:e_commerce/view/widgets/onboardingwidgets/customsilideronboardin
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../controller/onboardingcontroller.dart';
+import '../../../controller/onboardingcontrollers/onboardingcontroller.dart';
 
 class OnBoardingScreen extends StatelessWidget {
   const OnBoardingScreen({super.key});

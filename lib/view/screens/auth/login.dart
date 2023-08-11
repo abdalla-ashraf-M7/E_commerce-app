@@ -23,7 +23,7 @@ class LogInScreen extends StatelessWidget {
         centerTitle: true,
         title: Text(
           "Log in",
-          style: Theme.of(context).textTheme.displayLarge,
+          style: Theme.of(context).textTheme.displayLarge!.copyWith(color: Appcolors.grey2),
         ),
       ),
       body: Container(
@@ -31,26 +31,15 @@ class LogInScreen extends StatelessWidget {
         width: double.infinity,
         child: ListView(
           children: [
-            const SizedBox(
-              height: 40,
-            ),
-            Image.asset(
-              Appimageassets.logo,
-              height: 170,
-            ),
-            const SizedBox(
-              height: 30,
-            ),
+            const SizedBox(height: 30),
+            Image.asset(Appimageassets.newlogo, height: 100),
+            const SizedBox(height: 30),
             const CustomTitleAuth(
               title: 'Welcome Back',
             ),
-            const SizedBox(
-              height: 30,
-            ),
+            const SizedBox(height: 30),
             const CustomBodyAuth(body: "Log In With Your Email And Password OR Continue With Social Media"),
-            const SizedBox(
-              height: 30,
-            ),
+            const SizedBox(height: 30),
             Form(
                 key: controller.loginformstate,
                 child: Column(
@@ -61,9 +50,7 @@ class LogInScreen extends StatelessWidget {
                       icon: Icons.email_outlined,
                       textformcontroller: controller.email,
                     ),
-                    const SizedBox(
-                      height: 20,
-                    ),
+                    const SizedBox(height: 20),
                     CustomTextFormAuth(
                       hint: "Enter Your Password",
                       label: "Password",
@@ -72,17 +59,15 @@ class LogInScreen extends StatelessWidget {
                     ),
                   ],
                 )),
-            const SizedBox(
-              height: 20,
+            const SizedBox(height: 20),
+            CustomForgetAuth(
+              tap: () {
+                controller.gotoforgetpassword();
+              },
             ),
-            const CustomForgetAuth(),
-            const SizedBox(
-              height: 20,
-            ),
+            const SizedBox(height: 20),
             const CustomButtonAuth(text: "Continue"),
-            const SizedBox(
-              height: 40,
-            ),
+            const SizedBox(height: 20),
             CustomRowSignAuth(
               text1: "Don't Have An Account?",
               text2: " Sign Up",

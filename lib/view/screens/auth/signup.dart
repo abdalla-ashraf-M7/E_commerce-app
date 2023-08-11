@@ -4,6 +4,7 @@ import 'package:e_commerce/view/widgets/authwidgets/custombodyauth.dart';
 import 'package:e_commerce/view/widgets/authwidgets/custombuttonauth.dart';
 import 'package:e_commerce/view/widgets/authwidgets/customrowsignupauth.dart';
 import 'package:e_commerce/view/widgets/authwidgets/customtextformauth.dart';
+import 'package:e_commerce/view/widgets/authwidgets/customtitleauth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -21,7 +22,7 @@ class SignUpScreen extends StatelessWidget {
         centerTitle: true,
         title: Text(
           "Sign Up",
-          style: Theme.of(context).textTheme.displayLarge,
+          style: Theme.of(context).textTheme.displayLarge!.copyWith(color: Appcolors.grey2),
         ),
       ),
       body: Container(
@@ -29,13 +30,11 @@ class SignUpScreen extends StatelessWidget {
         width: double.infinity,
         child: ListView(
           children: [
-            const SizedBox(
-              height: 70,
-            ),
+            const SizedBox(height: 20),
+            const CustomTitleAuth(title: "Welcome"),
+            const SizedBox(height: 20),
             const CustomBodyAuth(body: "Sign Up With Your Email And Password OR Continue With Social Media"),
-            const SizedBox(
-              height: 40,
-            ),
+            const SizedBox(height: 40),
             Form(
                 key: controller.signupformstate,
                 child: Column(
@@ -46,27 +45,21 @@ class SignUpScreen extends StatelessWidget {
                       icon: Icons.person,
                       textformcontroller: controller.username,
                     ),
-                    const SizedBox(
-                      height: 30,
-                    ),
+                    const SizedBox(height: 30),
                     CustomTextFormAuth(
                       hint: "Enter Your Email",
                       label: "Email",
                       icon: Icons.email_outlined,
                       textformcontroller: controller.email,
                     ),
-                    const SizedBox(
-                      height: 30,
-                    ),
+                    const SizedBox(height: 30),
                     CustomTextFormAuth(
                       hint: "Enter Your Phone",
                       label: "Phone",
                       icon: Icons.phone_android,
                       textformcontroller: controller.phone,
                     ),
-                    const SizedBox(
-                      height: 30,
-                    ),
+                    const SizedBox(height: 30),
                     CustomTextFormAuth(
                       hint: "Enter Your Password",
                       label: "Password",
@@ -75,13 +68,14 @@ class SignUpScreen extends StatelessWidget {
                     ),
                   ],
                 )),
-            const SizedBox(
-              height: 40,
+            const SizedBox(height: 40),
+            CustomButtonAuth(
+              text: "Continue",
+              tap: () {
+                controller.gotoverifyemailsignup();
+              },
             ),
-            const CustomButtonAuth(text: "Continue"),
-            const SizedBox(
-              height: 60,
-            ),
+            const SizedBox(height: 20),
             CustomRowSignAuth(
               text1: " Have An Account?",
               text2: " Log In",

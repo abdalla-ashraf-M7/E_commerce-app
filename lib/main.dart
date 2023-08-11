@@ -3,6 +3,7 @@ import 'package:e_commerce/core/localization/changelocal.dart';
 import 'package:e_commerce/core/localization/translation.dart';
 import 'package:e_commerce/core/services/services.dart';
 import 'package:e_commerce/routes.dart';
+//import 'package:e_commerce/test.dart';
 import 'package:e_commerce/view/screens/auth/login.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -30,6 +31,7 @@ class MyApp extends StatelessWidget {
               labelLarge: TextStyle(color: Appcolors.white, fontSize: 22))),
       debugShowCheckedModeBanner: false,
       home: const LogInScreen(),
+      //home: const Test(),
       getPages: routes,
     );
   }

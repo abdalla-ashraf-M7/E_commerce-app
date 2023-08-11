@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 abstract class SignUpController extends GetxController {
   signup();
   gotologin();
+  gotoverifyemailsignup();
 }
 
 class SignUpControllerImp extends SignUpController {
@@ -17,6 +18,11 @@ class SignUpControllerImp extends SignUpController {
   @override
   gotologin() {
     Get.offAllNamed(Approutes.login);
+  }
+
+  @override
+  gotoverifyemailsignup() {
+    Get.toNamed(Approutes.verifyemailsignup);
   }
 
   @override
