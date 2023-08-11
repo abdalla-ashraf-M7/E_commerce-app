@@ -1,20 +1,19 @@
-import 'package:e_commerce/controller/auth/logincontroller.dart';
+import 'package:e_commerce/controller/auth/signupcontroller.dart';
 import 'package:e_commerce/core/constant/colors.dart';
-import 'package:e_commerce/core/constant/imageassets.dart';
 import 'package:e_commerce/view/widgets/authwidgets/custombodyauth.dart';
 import 'package:e_commerce/view/widgets/authwidgets/custombuttonauth.dart';
-import 'package:e_commerce/view/widgets/authwidgets/customforgetpassauth.dart';
 import 'package:e_commerce/view/widgets/authwidgets/customrowsignupauth.dart';
 import 'package:e_commerce/view/widgets/authwidgets/customtextformauth.dart';
 import 'package:e_commerce/view/widgets/authwidgets/customtitleauth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class LogInScreen extends StatelessWidget {
-  const LogInScreen({super.key});
+class SignUpScreen extends StatelessWidget {
+  const SignUpScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
-    LogInControllerImp controller = Get.put(LogInControllerImp());
+    SignUpControllerImp controller = Get.put(SignUpControllerImp());
     return Scaffold(
       backgroundColor: Appcolors.white,
       appBar: AppBar(
@@ -22,7 +21,7 @@ class LogInScreen extends StatelessWidget {
         elevation: 0.0,
         centerTitle: true,
         title: Text(
-          "9".tr,
+          "18".tr,
           style: Theme.of(context).textTheme.displayLarge!.copyWith(color: Appcolors.grey2),
         ),
       ),
@@ -31,26 +30,36 @@ class LogInScreen extends StatelessWidget {
         width: double.infinity,
         child: ListView(
           children: [
-            const SizedBox(height: 30),
-            Image.asset(Appimageassets.newlogo, height: 100),
-            const SizedBox(height: 30),
-            CustomTitleAuth(
-              title: '10'.tr,
-            ),
-            const SizedBox(height: 30),
-            CustomBodyAuth(body: "11".tr),
-            const SizedBox(height: 30),
+            const SizedBox(height: 20),
+            CustomTitleAuth(title: "19".tr),
+            const SizedBox(height: 20),
+            CustomBodyAuth(body: "20".tr),
+            const SizedBox(height: 40),
             Form(
-                key: controller.loginformstate,
+                key: controller.signupformstate,
                 child: Column(
                   children: [
                     CustomTextFormAuth(
-                      hint: "12".tr,
+                      hint: "22".tr,
+                      label: "21".tr,
+                      icon: Icons.person,
+                      textformcontroller: controller.username,
+                    ),
+                    const SizedBox(height: 30),
+                    CustomTextFormAuth(
+                      hint: "14".tr,
                       label: "13".tr,
                       icon: Icons.email_outlined,
                       textformcontroller: controller.email,
                     ),
-                    const SizedBox(height: 20),
+                    const SizedBox(height: 30),
+                    CustomTextFormAuth(
+                      hint: "24".tr,
+                      label: "23".tr,
+                      icon: Icons.phone_android,
+                      textformcontroller: controller.phone,
+                    ),
+                    const SizedBox(height: 30),
                     CustomTextFormAuth(
                       hint: "14".tr,
                       label: "15".tr,
@@ -59,20 +68,19 @@ class LogInScreen extends StatelessWidget {
                     ),
                   ],
                 )),
-            const SizedBox(height: 20),
-            CustomForgetAuth(
+            const SizedBox(height: 40),
+            CustomButtonAuth(
+              text: "8".tr,
               tap: () {
-                controller.gotoforgetpassword();
+                controller.gotoverifyemailsignup();
               },
             ),
             const SizedBox(height: 20),
-            CustomButtonAuth(text: "8".tr),
-            const SizedBox(height: 20),
             CustomRowSignAuth(
-              text1: "17".tr,
-              text2: "18".tr,
+              text1: "25".tr,
+              text2: "26".tr,
               tap: () {
-                controller.gotosignup();
+                controller.gotologin();
               },
             )
           ],

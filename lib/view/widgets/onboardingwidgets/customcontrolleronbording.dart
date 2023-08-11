@@ -1,4 +1,4 @@
-import 'package:e_commerce/controller/onboardingcontroller.dart';
+import 'package:e_commerce/controller/onboardingcontrollers/onboardingcontroller.dart';
 import 'package:e_commerce/data/datasource/static/static.dart';
 import 'package:flutter/material.dart';
 import 'package:e_commerce/core/constant/colors.dart';
@@ -20,8 +20,8 @@ class CustomControllerOnBoarding extends StatelessWidget {
                     margin: const EdgeInsets.only(right: 6),
                     width: index == controller.pagenumber ? 20 : 5,
                     height: 5,
-                    decoration: BoxDecoration(color: appcolors.primarycolor, borderRadius: BorderRadius.circular(10)),
-                    duration: const Duration(milliseconds: 900)))
+                    decoration: BoxDecoration(color: Appcolors.primarycolor, borderRadius: BorderRadius.circular(10)),
+                    duration: const Duration(milliseconds: 600)))
           ],
         );
       },

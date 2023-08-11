@@ -1,4 +1,4 @@
-import 'package:e_commerce/controller/onboardingcontroller.dart';
+import 'package:e_commerce/controller/onboardingcontrollers/onboardingcontroller.dart';
 import 'package:e_commerce/data/datasource/static/static.dart';
 import 'package:flutter/material.dart';
 import 'package:e_commerce/core/constant/colors.dart';
@@ -17,13 +17,13 @@ class CustomButtonOnBoarding extends StatelessWidget {
         child: ElevatedButton(
             style: ButtonStyle(
                 shape: MaterialStateProperty.all<RoundedRectangleBorder>(RoundedRectangleBorder(borderRadius: BorderRadius.circular(20))),
-                backgroundColor: const MaterialStatePropertyAll(appcolors.primarycolor)),
+                backgroundColor: const MaterialStatePropertyAll(Appcolors.primarycolor)),
             onPressed: () {
               controller.next();
             },
             child: Text(
-              controller.pagenumber == onboardingdatasource.length - 1 ? "Log In" : "Continue",
-              style: TextStyle(fontSize: 20),
+              controller.pagenumber == onboardingdatasource.length - 1 ? "9".tr : "8".tr,
+              style: Theme.of(context).textTheme.labelLarge,
             )),
       ),
     );
