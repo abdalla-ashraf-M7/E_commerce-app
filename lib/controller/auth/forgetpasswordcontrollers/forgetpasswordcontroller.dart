@@ -12,7 +12,10 @@ class ForgetPasswordControllerImp extends ForgetPasswordController {
 
   @override
   gotoverifycode() {
-    Get.toNamed(Approutes.verifycode);
+    FormState? formdata = forgetpasswordformstate!.currentState;
+    if (formdata!.validate()) {
+      Get.toNamed(Approutes.verifycode);
+    }
   }
 
   @override

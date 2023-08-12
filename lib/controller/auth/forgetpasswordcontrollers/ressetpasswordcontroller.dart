@@ -13,7 +13,13 @@ class RessetPasswordControllerImp extends RessetPasswordController {
 
   @override
   gotosucessressetpassword() {
-    Get.offAllNamed(Approutes.sucessressetpassword);
+    FormState? formdata = ressetPasswordformstate!.currentState;
+    if (formdata!.validate()) {
+      /* if (password1 == password2) {
+        Get.offAllNamed(Approutes.sucessressetpassword);
+      }  */
+      Get.offAllNamed(Approutes.sucessressetpassword);
+    }
   }
 
   @override

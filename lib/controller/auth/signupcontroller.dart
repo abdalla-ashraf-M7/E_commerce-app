@@ -22,7 +22,10 @@ class SignUpControllerImp extends SignUpController {
 
   @override
   gotoverifyemailsignup() {
-    Get.toNamed(Approutes.verifyemailsignup);
+    FormState? formdata = signupformstate!.currentState;
+    if (formdata!.validate()) {
+      Get.toNamed(Approutes.verifyemailsignup);
+    }
   }
 
   @override

@@ -1,5 +1,4 @@
 import 'package:e_commerce/controller/auth/forgetpasswordcontrollers/forgetpasswordcontroller.dart';
-import 'package:e_commerce/core/constant/approutes.dart';
 import 'package:e_commerce/core/constant/colors.dart';
 import 'package:e_commerce/view/widgets/authwidgets/custombodyauth.dart';
 import 'package:e_commerce/view/widgets/authwidgets/custombuttonauth.dart';
@@ -9,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../../core/constant/imageassets.dart';
+import '../../../../core/functions/vaildator.dart';
 
 class ForgetPasswordScreen extends StatelessWidget {
   const ForgetPasswordScreen({super.key});
@@ -43,22 +43,27 @@ class ForgetPasswordScreen extends StatelessWidget {
             CustomBodyAuth(body: "37".tr),
             const SizedBox(height: 30),
             Form(
+                key: controller.forgetpasswordformstate,
                 child: Column(
-              children: [
-                CustomTextFormAuth(
-                  hint: "39".tr,
-                  label: "38".tr,
-                  icon: Icons.email_outlined,
-                  textformcontroller: controller.email,
-                ),
-                const SizedBox(height: 30),
-              ],
-            )),
+                  children: [
+                    CustomTextFormAuth(
+                      isnumber: false,
+                      valid: (val) {
+                        return ValidInput(val!, 5, 20, "email".tr);
+                      },
+                      hint: "39".tr,
+                      label: "38".tr,
+                      icon: Icons.email_outlined,
+                      textformcontroller: controller.email,
+                    ),
+                    const SizedBox(height: 30),
+                  ],
+                )),
             const SizedBox(height: 10),
             CustomButtonAuth(
               text: "40".tr,
               tap: () {
-                Get.toNamed(Approutes.verifycode);
+                controller.gotoverifycode();
               },
             ),
             const SizedBox(height: 20),

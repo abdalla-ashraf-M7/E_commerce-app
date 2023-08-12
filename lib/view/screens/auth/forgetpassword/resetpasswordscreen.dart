@@ -1,5 +1,6 @@
 import 'package:e_commerce/core/constant/colors.dart';
 import 'package:e_commerce/core/constant/imageassets.dart';
+import 'package:e_commerce/core/functions/vaildator.dart';
 import 'package:e_commerce/view/widgets/authwidgets/custombodyauth.dart';
 import 'package:e_commerce/view/widgets/authwidgets/custombuttonauth.dart';
 import 'package:e_commerce/view/widgets/authwidgets/customtextformauth.dart';
@@ -43,24 +44,33 @@ class RessetPasswordScreen extends StatelessWidget {
             CustomBodyAuth(body: "46".tr),
             const SizedBox(height: 30),
             Form(
+                key: controller.ressetPasswordformstate,
                 child: Column(
-              children: [
-                CustomTextFormAuth(
-                  hint: "14".tr,
-                  label: "47".tr,
-                  icon: Icons.lock_outline,
-                  textformcontroller: controller.password1,
-                ),
-                const SizedBox(height: 30),
-                CustomTextFormAuth(
-                  hint: "48".tr,
-                  label: "47".tr,
-                  icon: Icons.lock_outline,
-                  textformcontroller: controller.password1,
-                ),
-                const SizedBox(height: 30),
-              ],
-            )),
+                  children: [
+                    CustomTextFormAuth(
+                      isnumber: false,
+                      valid: (val) {
+                        return ValidInput(val!, 5, 20, "password".tr);
+                      },
+                      hint: "14".tr,
+                      label: "47".tr,
+                      icon: Icons.lock_outline,
+                      textformcontroller: controller.password1,
+                    ),
+                    const SizedBox(height: 30),
+                    CustomTextFormAuth(
+                      isnumber: false,
+                      valid: (val) {
+                        return ValidInput(val!, 5, 20, "password".tr);
+                      },
+                      hint: "48".tr,
+                      label: "47".tr,
+                      icon: Icons.lock_outline,
+                      textformcontroller: controller.password2,
+                    ),
+                    const SizedBox(height: 30),
+                  ],
+                )),
             const SizedBox(height: 10),
             CustomButtonAuth(
               text: "49".tr,

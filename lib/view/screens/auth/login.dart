@@ -1,6 +1,7 @@
 import 'package:e_commerce/controller/auth/logincontroller.dart';
 import 'package:e_commerce/core/constant/colors.dart';
 import 'package:e_commerce/core/constant/imageassets.dart';
+import 'package:e_commerce/core/functions/vaildator.dart';
 import 'package:e_commerce/view/widgets/authwidgets/custombodyauth.dart';
 import 'package:e_commerce/view/widgets/authwidgets/custombuttonauth.dart';
 import 'package:e_commerce/view/widgets/authwidgets/customforgetpassauth.dart';
@@ -45,6 +46,10 @@ class LogInScreen extends StatelessWidget {
                 child: Column(
                   children: [
                     CustomTextFormAuth(
+                      isnumber: false,
+                      valid: (val) {
+                        return ValidInput(val!, 5, 20, "email");
+                      },
                       hint: "12".tr,
                       label: "13".tr,
                       icon: Icons.email_outlined,
@@ -52,6 +57,10 @@ class LogInScreen extends StatelessWidget {
                     ),
                     const SizedBox(height: 20),
                     CustomTextFormAuth(
+                      isnumber: false,
+                      valid: (val) {
+                        return ValidInput(val!, 5, 20, "passsword");
+                      },
                       hint: "14".tr,
                       label: "15".tr,
                       icon: Icons.lock_outline,
@@ -66,7 +75,12 @@ class LogInScreen extends StatelessWidget {
               },
             ),
             const SizedBox(height: 20),
-            CustomButtonAuth(text: "8".tr),
+            CustomButtonAuth(
+              text: "8".tr,
+              tap: () {
+                controller.login();
+              },
+            ),
             const SizedBox(height: 20),
             CustomRowSignAuth(
               text1: "17".tr,

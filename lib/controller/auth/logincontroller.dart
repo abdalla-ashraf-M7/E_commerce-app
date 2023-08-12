@@ -24,7 +24,14 @@ class LogInControllerImp extends LogInController {
   }
 
   @override
-  login() {}
+  login() {
+    FormState? formdata = loginformstate!.currentState;
+    if (formdata!.validate()) {
+      print("valid");
+    } else {
+      print("Not Valid");
+    }
+  }
 
   @override
   void onInit() {

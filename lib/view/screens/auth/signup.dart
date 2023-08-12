@@ -8,6 +8,8 @@ import 'package:e_commerce/view/widgets/authwidgets/customtitleauth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../core/functions/vaildator.dart';
+
 class SignUpScreen extends StatelessWidget {
   const SignUpScreen({super.key});
 
@@ -40,6 +42,10 @@ class SignUpScreen extends StatelessWidget {
                 child: Column(
                   children: [
                     CustomTextFormAuth(
+                      isnumber: false,
+                      valid: (val) {
+                        return ValidInput(val!, 5, 20, "username".tr);
+                      },
                       hint: "22".tr,
                       label: "21".tr,
                       icon: Icons.person,
@@ -47,6 +53,10 @@ class SignUpScreen extends StatelessWidget {
                     ),
                     const SizedBox(height: 30),
                     CustomTextFormAuth(
+                      isnumber: false,
+                      valid: (val) {
+                        return ValidInput(val!, 5, 20, "email".tr);
+                      },
                       hint: "14".tr,
                       label: "13".tr,
                       icon: Icons.email_outlined,
@@ -54,6 +64,10 @@ class SignUpScreen extends StatelessWidget {
                     ),
                     const SizedBox(height: 30),
                     CustomTextFormAuth(
+                      isnumber: true,
+                      valid: (val) {
+                        return ValidInput(val!, 9, 11, "phone".tr);
+                      },
                       hint: "24".tr,
                       label: "23".tr,
                       icon: Icons.phone_android,
@@ -61,6 +75,10 @@ class SignUpScreen extends StatelessWidget {
                     ),
                     const SizedBox(height: 30),
                     CustomTextFormAuth(
+                      isnumber: false,
+                      valid: (val) {
+                        return ValidInput(val!, 5, 20, "password".tr);
+                      },
                       hint: "14".tr,
                       label: "15".tr,
                       icon: Icons.lock_outline,
