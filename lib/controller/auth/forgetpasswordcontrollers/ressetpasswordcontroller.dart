@@ -4,12 +4,16 @@ import 'package:get/get.dart';
 
 abstract class RessetPasswordController extends GetxController {
   gotosucessressetpassword();
+  hidepassword();
+  hidepassword2();
 }
 
 class RessetPasswordControllerImp extends RessetPasswordController {
   GlobalKey<FormState>? ressetPasswordformstate;
   TextEditingController? password1;
   TextEditingController? password2;
+  bool ispasswordhidden = true;
+  bool ispasswordhidden2 = true;
 
   @override
   gotosucessressetpassword() {
@@ -20,6 +24,26 @@ class RessetPasswordControllerImp extends RessetPasswordController {
       }  */
       Get.offAllNamed(Approutes.sucessressetpassword);
     }
+  }
+
+  @override
+  hidepassword() {
+    if (ispasswordhidden == false) {
+      ispasswordhidden = true;
+    } else {
+      ispasswordhidden = false;
+    }
+    update();
+  }
+
+  @override
+  hidepassword2() {
+    if (ispasswordhidden2 == false) {
+      ispasswordhidden2 = true;
+    } else {
+      ispasswordhidden2 = false;
+    }
+    update();
   }
 
   @override

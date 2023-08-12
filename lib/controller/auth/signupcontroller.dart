@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 
 abstract class SignUpController extends GetxController {
   signup();
+  hidepassword();
   gotologin();
   gotoverifyemailsignup();
 }
@@ -14,10 +15,21 @@ class SignUpControllerImp extends SignUpController {
   TextEditingController? password;
   TextEditingController? username;
   TextEditingController? phone;
+  bool ispasswordhidden = true;
 
   @override
   gotologin() {
     Get.offAllNamed(Approutes.login);
+  }
+
+  @override
+  hidepassword() {
+    if (ispasswordhidden == false) {
+      ispasswordhidden = true;
+    } else {
+      ispasswordhidden = false;
+    }
+    update();
   }
 
   @override

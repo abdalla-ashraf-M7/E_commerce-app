@@ -1,5 +1,6 @@
+import 'package:e_commerce/core/constant/colors.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
+import 'package:get/get.dart';
 
 class Test extends StatefulWidget {
   const Test({super.key});
@@ -12,30 +13,40 @@ class _TestState extends State<Test> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Test")),
-      body: Center(
-          child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          OtpTextField(
-            fieldWidth: 55,
-            borderRadius: BorderRadius.circular(20),
-            numberOfFields: 5,
-            borderColor: Color(0xFF512DA8),
-            //set to true to show as box or false to show as dash
-            showFieldAsBox: true,
-            //runs when a code is typed in
-            onCodeChanged: (String code) {
-              //handle validation or checks here
-              print("************$code");
-            },
-            //runs when every textfield is filled
-            onSubmit: (String verificationCode) {
-              print("************$verificationCode");
-            }, // end onSubmit
-          ),
-        ],
-      )),
-    );
+        appBar: AppBar(title: Text("Test")),
+        body: const WillPopScope(
+            onWillPop: exitAlert,
+            child: Center(
+                child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [],
+            ))));
   }
+}
+
+Future<bool> exitAlert() {
+  Get.defaultDialog(
+      barrierDismissible: true,
+      radius: 20,
+      title: "warning!!",
+      titleStyle: const TextStyle(fontSize: 40, color: Appcolors.primarycolor),
+      middleText: "Are You Sure That You Want To Exit The App?",
+      middleTextStyle: const TextStyle(color: Appcolors.grey, fontSize: 20),
+      actions: [
+        TextButton(
+            onPressed: () {},
+            style: ButtonStyle(overlayColor: MaterialStateProperty.all(Colors.amber)),
+            child: const Text(
+              "Cancle",
+              style: TextStyle(color: Colors.red, fontSize: 28),
+            )),
+        const SizedBox(width: 40),
+        TextButton(
+            onPressed: () {},
+            child: const Text(
+              "Confirm",
+              style: TextStyle(fontSize: 28),
+            )),
+      ]);
+  return Future.value(true);
 }

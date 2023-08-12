@@ -6,16 +6,28 @@ abstract class LogInController extends GetxController {
   login();
   gotosignup();
   gotoforgetpassword();
+  hidepassword();
 }
 
 class LogInControllerImp extends LogInController {
   GlobalKey<FormState>? loginformstate;
   TextEditingController? email;
   TextEditingController? password;
+  bool ispasswordhidden = true;
 
   @override
   gotosignup() {
     Get.offAllNamed(Approutes.signup);
+  }
+
+  @override
+  hidepassword() {
+    if (ispasswordhidden == false) {
+      ispasswordhidden = true;
+    } else {
+      ispasswordhidden = false;
+    }
+    update();
   }
 
   @override

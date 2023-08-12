@@ -43,34 +43,42 @@ class RessetPasswordScreen extends StatelessWidget {
             const SizedBox(height: 20),
             CustomBodyAuth(body: "46".tr),
             const SizedBox(height: 30),
-            Form(
-                key: controller.ressetPasswordformstate,
-                child: Column(
-                  children: [
-                    CustomTextFormAuth(
-                      isnumber: false,
-                      valid: (val) {
-                        return ValidInput(val!, 5, 20, "password".tr);
-                      },
-                      hint: "14".tr,
-                      label: "47".tr,
-                      icon: Icons.lock_outline,
-                      textformcontroller: controller.password1,
-                    ),
-                    const SizedBox(height: 30),
-                    CustomTextFormAuth(
-                      isnumber: false,
-                      valid: (val) {
-                        return ValidInput(val!, 5, 20, "password".tr);
-                      },
-                      hint: "48".tr,
-                      label: "47".tr,
-                      icon: Icons.lock_outline,
-                      textformcontroller: controller.password2,
-                    ),
-                    const SizedBox(height: 30),
-                  ],
-                )),
+            GetBuilder<RessetPasswordControllerImp>(
+              builder: (controller) => Form(
+                  key: controller.ressetPasswordformstate,
+                  child: Column(
+                    children: [
+                      CustomTextFormAuth(
+                        isobscure: controller.ispasswordhidden,
+                        ontapicon: () {
+                          controller.hidepassword();
+                        },
+                        valid: (val) {
+                          return ValidInput(val!, 5, 20, "password".tr);
+                        },
+                        hint: "14".tr,
+                        label: "47".tr,
+                        icon: Icons.lock_outline,
+                        textformcontroller: controller.password1,
+                      ),
+                      const SizedBox(height: 30),
+                      CustomTextFormAuth(
+                        isobscure: controller.ispasswordhidden2,
+                        ontapicon: () {
+                          controller.hidepassword2();
+                        },
+                        valid: (val) {
+                          return ValidInput(val!, 5, 20, "password".tr);
+                        },
+                        hint: "48".tr,
+                        label: "47".tr,
+                        icon: Icons.lock_outline,
+                        textformcontroller: controller.password2,
+                      ),
+                      const SizedBox(height: 30),
+                    ],
+                  )),
+            ),
             const SizedBox(height: 10),
             CustomButtonAuth(
               text: "49".tr,

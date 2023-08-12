@@ -1,22 +1,29 @@
 import 'package:flutter/material.dart';
 
 class CustomTextFormAuth extends StatelessWidget {
-  const CustomTextFormAuth({super.key, required this.hint, required this.label, required this.icon, required this.textformcontroller, required this.valid, required this.isnumber});
+  const CustomTextFormAuth(
+      {super.key, required this.hint, required this.label, required this.icon, required this.textformcontroller, required this.valid, this.isnumber, this.isobscure, this.ontapicon});
   final String hint;
   final String label;
   final IconData icon;
-  final bool isnumber;
+  final bool? isnumber;
+  final bool? isobscure;
+  final void Function()? ontapicon;
 
   final String? Function(String?) valid;
   final TextEditingController? textformcontroller;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      obscureText: isobscure == null || isobscure == false ? false : true,
       validator: valid,
       keyboardType: isnumber == true ? TextInputType.phone : TextInputType.text,
       controller: textformcontroller,
       decoration: InputDecoration(
-          suffixIcon: Icon(icon),
+          suffixIcon: InkWell(
+            child: Icon(icon),
+            onTap: ontapicon,
+          ),
           hintText: hint,
           hintStyle: const TextStyle(fontSize: 15),
           label: Container(
