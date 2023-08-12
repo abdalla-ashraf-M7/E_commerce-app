@@ -10,6 +10,6 @@ class Approutes {
   static const String verifyemailsignup = "/verifyemailsignup";
 
   //OnBoarding
-  static const String language = "/language";
+  static const String language = "/";
   static const String onboarding = "/onboarding";
 }

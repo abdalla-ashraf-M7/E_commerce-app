@@ -1,4 +1,5 @@
 import 'package:e_commerce/core/constant/approutes.dart';
+import 'package:e_commerce/core/middleware/mymiddleware.dart';
 import 'package:e_commerce/view/screens/auth/forgetpassword/forgetpasswordscreen.dart';
 import 'package:e_commerce/view/screens/auth/forgetpassword/sucessressetpasswordscreen.dart';
 import 'package:e_commerce/view/screens/auth/login.dart';
@@ -23,6 +24,7 @@ List<GetPage<dynamic>> routes = [
   GetPage(
     name: Approutes.language,
     page: () => const LanguageScreen(),
+    middlewares: [MyMiddleWare()],
   ),
   GetPage(
     name: Approutes.signup,

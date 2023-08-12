@@ -1,5 +1,5 @@
 import 'package:e_commerce/controller/auth/logincontroller.dart';
-import 'package:e_commerce/controller/auth/signupcontroller.dart';
+
 import 'package:e_commerce/core/constant/colors.dart';
 import 'package:e_commerce/core/constant/imageassets.dart';
 import 'package:e_commerce/core/functions/exitalert.dart';
