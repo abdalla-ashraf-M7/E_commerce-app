@@ -1,4 +1,7 @@
+import 'package:e_commerce/core/class/requeststatus.dart';
 import 'package:e_commerce/core/constant/approutes.dart';
+import 'package:e_commerce/core/functions/handlingdata.dart';
+import 'package:e_commerce/data/datasource/remote/auth/logindata.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -35,13 +38,29 @@ class LogInControllerImp extends LogInController {
     Get.toNamed(Approutes.forgetpassword);
   }
 
+  LoginData loginData = LoginData(Get.find());
+  requeststatus reqeuststate = requeststatus.success;
   @override
-  login() {
-    FormState? formdata = loginformstate!.currentState;
-    if (formdata!.validate()) {
-      print("valid");
-    } else {
-      print("Not Valid");
+  login() async {
+    if (loginformstate!.currentState!.validate()) {
+      reqeuststate = requeststatus.loading;
+      update();
+      var response = await loginData.getData(email!.text, password!.text);
+      print("**********************$response");
+      reqeuststate = handlingData(response);
+      if (reqeuststate == requeststatus.success) {
+        if (response["status"] == "success") {
+          Get.toNamed(Approutes.home);
+        } else if (response["message"] == "xapprove") {
+          reqeuststate = requeststatus.xapprove;
+        } else if (response["message"] == "xwrong") {
+          reqeuststate = requeststatus.failaur;
+        } else {
+          reqeuststate == requeststatus.unknown;
+        }
+        print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ $reqeuststate");
+        update();
+      }
     }
   }
 

@@ -44,13 +44,12 @@ class SignUpControllerImp extends SignUpController {
       requeststate = requeststatus.loading;
       update();
       var response = await signUpData.getData(username!.text, email!.text, password!.text, phone!.text);
-
       print("**********************************$response");
       requeststate = handlingData(response);
       if (requeststate == requeststatus.success) {
         if (response["status"] == "success") {
           //data.addAll(response['data']);
-          Get.toNamed(Approutes.verifyemailsignup);
+          Get.toNamed(Approutes.verifyemailsignup, arguments: {"email": email!.text});
         } else {
           //Get.defaultDialog(title: "dfdf", middleText: "dfdf");
           requeststate = requeststatus.failaur;

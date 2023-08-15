@@ -17,6 +17,10 @@ class HandlinDataView extends StatelessWidget {
                 ? Center(child: Lottie.asset(Appimageassets.server, width: 300))
                 : requeststat == requeststatus.failaur
                     ? Center(child: Lottie.asset(Appimageassets.nodata, width: 300))
-                    : widget;
+                    : requeststat == requeststatus.xapprove
+                        ? const Center(child: Center(child: Text("You need to verify your email first")))
+                        : requeststat == requeststatus.unknown
+                            ? const Center(child: Center(child: Text("unknown error")))
+                            : widget;
   }
 }

@@ -8,7 +8,6 @@ import 'package:e_commerce/view/widgets/authwidgets/customtextformauth.dart';
 import 'package:e_commerce/view/widgets/authwidgets/customtitleauth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import '../../../core/functions/vaildator.dart';
 
 class SignUpScreen extends StatelessWidget {

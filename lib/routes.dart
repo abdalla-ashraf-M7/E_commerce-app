@@ -10,6 +10,7 @@ import 'package:e_commerce/view/screens/auth/signup.dart';
 import 'package:e_commerce/view/screens/auth/forgetpassword/verifycodescreen.dart';
 import 'package:e_commerce/view/screens/auth/sucesssignupscreen.dart';
 import 'package:e_commerce/view/screens/auth/verifyemailsinupscreen.dart';
+import 'package:e_commerce/view/screens/home.dart';
 import 'package:e_commerce/view/screens/onboarding/languagescreen.dart';
 import 'package:e_commerce/view/screens/onboarding/onboardingscreen.dart';
 import 'package:e_commerce/view/test_datascreen.dart';
@@ -28,4 +29,5 @@ List<GetPage<dynamic>> routes = [
   GetPage(name: Approutes.verifyemailsignup, page: () => const VerifyEmailSignupScreen()),
   GetPage(name: Approutes.sucesssignup, page: () => const ScuccessSignUpScreen()),
   GetPage(name: Approutes.sucessressetpassword, page: () => const ScuccessRessetPasswordScreen()),
+  GetPage(name: Approutes.home, page: () => const HomeScreen()),
 ];
