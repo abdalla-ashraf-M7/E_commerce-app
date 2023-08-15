@@ -1,6 +1,6 @@
 import 'package:e_commerce/controller/auth/signupcontroller.dart';
+import 'package:e_commerce/core/class/handlingdatview.dart';
 import 'package:e_commerce/core/constant/colors.dart';
-import 'package:e_commerce/core/functions/exitalert.dart';
 import 'package:e_commerce/view/widgets/authwidgets/custombodyauth.dart';
 import 'package:e_commerce/view/widgets/authwidgets/custombuttonauth.dart';
 import 'package:e_commerce/view/widgets/authwidgets/customrowsignupauth.dart';
@@ -16,7 +16,7 @@ class SignUpScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    SignUpControllerImp controller = Get.put(SignUpControllerImp());
+    Get.put(SignUpControllerImp());
     return Scaffold(
         backgroundColor: Appcolors.white,
         appBar: AppBar(
@@ -28,90 +28,89 @@ class SignUpScreen extends StatelessWidget {
             style: Theme.of(context).textTheme.displayLarge!.copyWith(color: Appcolors.grey2),
           ),
         ),
-        body: WillPopScope(
-            onWillPop: exitAlert,
-            child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 40),
-              width: double.infinity,
-              child: ListView(
-                children: [
-                  const SizedBox(height: 20),
-                  CustomTitleAuth(title: "19".tr),
-                  const SizedBox(height: 20),
-                  CustomBodyAuth(body: "20".tr),
-                  const SizedBox(height: 40),
-                  Form(
-                      key: controller.signupformstate,
-                      child: Column(
-                        children: [
-                          CustomTextFormAuth(
-                            isnumber: false,
-                            valid: (val) {
-                              return ValidInput(val!, 5, 20, "username".tr);
-                            },
-                            hint: "22".tr,
-                            label: "21".tr,
-                            icon: Icons.person,
-                            textformcontroller: controller.username,
-                          ),
-                          const SizedBox(height: 30),
-                          CustomTextFormAuth(
-                            isnumber: false,
-                            valid: (val) {
-                              return ValidInput(val!, 5, 20, "email".tr);
-                            },
-                            hint: "14".tr,
-                            label: "13".tr,
-                            icon: Icons.email_outlined,
-                            textformcontroller: controller.email,
-                          ),
-                          const SizedBox(height: 30),
-                          CustomTextFormAuth(
-                            isnumber: true,
-                            valid: (val) {
-                              return ValidInput(val!, 9, 11, "phone".tr);
-                            },
-                            hint: "24".tr,
-                            label: "23".tr,
-                            icon: Icons.phone_android,
-                            textformcontroller: controller.phone,
-                          ),
-                          const SizedBox(height: 30),
-                          GetBuilder<SignUpControllerImp>(
-                            builder: (controller) => CustomTextFormAuth(
-                              isobscure: controller.ispasswordhidden,
-                              ontapicon: () {
-                                controller.hidepassword();
-                              },
-                              isnumber: false,
-                              valid: (val) {
-                                return ValidInput(val!, 5, 20, "password".tr);
-                              },
-                              hint: "14".tr,
-                              label: "15".tr,
-                              icon: Icons.lock_outline,
-                              textformcontroller: controller.password,
-                            ),
-                          )
-                        ],
-                      )),
-                  const SizedBox(height: 40),
-                  CustomButtonAuth(
-                    text: "8".tr,
-                    tap: () {
-                      controller.gotoverifyemailsignup();
-                    },
+        body: GetBuilder<SignUpControllerImp>(
+            builder: (controller) => HandlinDataView(
+                requeststat: controller.requeststate,
+                widget: Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 40),
+                  width: double.infinity,
+                  child: ListView(
+                    children: [
+                      const SizedBox(height: 20),
+                      CustomTitleAuth(title: "19".tr),
+                      const SizedBox(height: 20),
+                      CustomBodyAuth(body: "20".tr),
+                      const SizedBox(height: 40),
+                      Form(
+                          key: controller.signupformstate,
+                          child: Column(
+                            children: [
+                              CustomTextFormAuth(
+                                valid: (val) {
+                                  return ValidInput(val!, 5, 20, "username".tr);
+                                },
+                                hint: "22".tr,
+                                label: "21".tr,
+                                icon: Icons.person,
+                                textformcontroller: controller.username,
+                              ),
+                              const SizedBox(height: 30),
+                              CustomTextFormAuth(
+                                valid: (val) {
+                                  return ValidInput(val!, 5, 50, "email".tr);
+                                },
+                                hint: "14".tr,
+                                label: "13".tr,
+                                icon: Icons.email_outlined,
+                                textformcontroller: controller.email,
+                              ),
+                              const SizedBox(height: 30),
+                              CustomTextFormAuth(
+                                isnumber: true,
+                                valid: (val) {
+                                  return ValidInput(val!, 1, 20, "phone".tr);
+                                },
+                                hint: "24".tr,
+                                label: "23".tr,
+                                icon: Icons.phone_android,
+                                textformcontroller: controller.phone,
+                              ),
+                              const SizedBox(height: 30),
+                              CustomTextFormAuth(
+                                isobscure: controller.ispasswordhidden,
+                                ontapicon: () {
+                                  controller.hidepassword();
+                                },
+                                valid: (val) {
+                                  return ValidInput(val!, 5, 20, "password".tr);
+                                },
+                                hint: "14".tr,
+                                label: "15".tr,
+                                icon: Icons.lock_outline,
+                                textformcontroller: controller.password,
+                              ),
+                            ],
+                          )),
+                      const SizedBox(height: 40),
+                      CustomButtonAuth(
+                        text: "8".tr,
+                        tap: () {
+                          controller.gotoverifyemailsignup();
+                        },
+                      ),
+                      const SizedBox(height: 20),
+                      CustomRowSignAuth(
+                        text1: "25".tr,
+                        text2: "26".tr,
+                        tap: () {
+                          controller.gotologin();
+                        },
+                      )
+                    ],
                   ),
-                  const SizedBox(height: 20),
-                  CustomRowSignAuth(
-                    text1: "25".tr,
-                    text2: "26".tr,
-                    tap: () {
-                      controller.gotologin();
-                    },
-                  )
-                ],
-              ),
-            )));
+                ))
+            //controller.requeststate == requeststatus.loading
+
+            ));
   }
 }

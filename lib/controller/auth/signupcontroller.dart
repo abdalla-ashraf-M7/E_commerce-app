@@ -1,4 +1,7 @@
+import 'package:e_commerce/core/class/requeststatus.dart';
 import 'package:e_commerce/core/constant/approutes.dart';
+import 'package:e_commerce/core/functions/handlingdata.dart';
+import 'package:e_commerce/data/datasource/remote/auth/signupdata.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -32,12 +35,29 @@ class SignUpControllerImp extends SignUpController {
     update();
   }
 
+  SignUpData signUpData = SignUpData(Get.find());
+  List data = [];
+  requeststatus requeststate = requeststatus.success;
   @override
-  gotoverifyemailsignup() {
-    FormState? formdata = signupformstate!.currentState;
-    if (formdata!.validate()) {
-      Get.toNamed(Approutes.verifyemailsignup);
+  gotoverifyemailsignup() async {
+    if (signupformstate!.currentState!.validate()) {
+      requeststate = requeststatus.loading;
+      update();
+      var response = await signUpData.getData(username!.text, email!.text, password!.text, phone!.text);
+
+      print("**********************************$response");
+      requeststate = handlingData(response);
+      if (requeststate == requeststatus.success) {
+        if (response["status"] == "success") {
+          //data.addAll(response['data']);
+          Get.toNamed(Approutes.verifyemailsignup);
+        } else {
+          //Get.defaultDialog(title: "dfdf", middleText: "dfdf");
+          requeststate = requeststatus.failaur;
+        }
+      } else {}
     }
+    update();
   }
 
   @override
@@ -48,6 +68,8 @@ class SignUpControllerImp extends SignUpController {
     signupformstate = GlobalKey();
     email = TextEditingController();
     password = TextEditingController();
+    username = TextEditingController();
+    phone = TextEditingController();
     super.onInit();
   }
 

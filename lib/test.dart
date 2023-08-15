@@ -1,4 +1,5 @@
 import 'package:e_commerce/core/constant/colors.dart';
+import 'package:e_commerce/core/functions/checkinternet.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -10,6 +11,18 @@ class Test extends StatefulWidget {
 }
 
 class _TestState extends State<Test> {
+  bool? result;
+  initialcheckinternet() async {
+    result = await checkINternet();
+    print(result);
+  }
+
+  @override
+  void initState() {
+    initialcheckinternet();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
