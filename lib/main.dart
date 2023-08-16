@@ -11,6 +11,7 @@ import 'package:get/get.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
   await initialservices();
   runApp(const MyApp());
 }

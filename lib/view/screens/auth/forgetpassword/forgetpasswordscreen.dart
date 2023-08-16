@@ -53,7 +53,7 @@ class ForgetPasswordScreen extends StatelessWidget {
                                 CustomTextFormAuth(
                                   isnumber: false,
                                   valid: (val) {
-                                    return ValidInput(val!, 5, 20, "email".tr);
+                                    return ValidInput(val!, 5, 50, "email".tr);
                                   },
                                   hint: "39".tr,
                                   label: "38".tr,

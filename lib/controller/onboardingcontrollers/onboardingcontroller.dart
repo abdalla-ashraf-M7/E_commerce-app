@@ -16,7 +16,7 @@ class OnBoardingControllerImp extends OnBoardingController {
   @override
   next() {
     if (pagenumber == onboardingdatasource.length - 1) {
-      myServices.sharedPrefs!.setBool("onboardingdone", true);
+      myServices.sharedPrefs!.setString("step", "1");
       Get.offAllNamed(Approutes.login);
       //Get.delete<LanguageController>(force: true);
     } else {

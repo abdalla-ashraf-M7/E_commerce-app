@@ -55,7 +55,7 @@ class LogInScreen extends StatelessWidget {
                                 children: [
                                   CustomTextFormAuth(
                                     valid: (val) {
-                                      return ValidInput(val!, 5, 30, "email");
+                                      return ValidInput(val!, 5, 50, "email");
                                     },
                                     hint: "12".tr,
                                     label: "13".tr,
@@ -70,7 +70,7 @@ class LogInScreen extends StatelessWidget {
                                         controller.hidepassword();
                                       },
                                       valid: (val) {
-                                        return ValidInput(val!, 5, 30, "passsword");
+                                        return ValidInput(val!, 5, 50, "passsword");
                                       },
                                       hint: "14".tr,
                                       label: "15".tr,

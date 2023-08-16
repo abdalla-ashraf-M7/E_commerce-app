@@ -1,8 +1,11 @@
 import 'package:e_commerce/core/class/requeststatus.dart';
 import 'package:e_commerce/core/constant/approutes.dart';
 import 'package:e_commerce/core/functions/handlingdata.dart';
+import 'package:e_commerce/core/functions/saveuserdata.dart';
+import 'package:e_commerce/core/services/services.dart';
 import 'package:e_commerce/data/datasource/remote/auth/logindata.dart';
 import 'package:e_commerce/view/widgets/defaultdialog.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -18,7 +21,7 @@ class LogInControllerImp extends LogInController {
   TextEditingController? email;
   TextEditingController? password;
   bool ispasswordhidden = true;
-
+  MyServices myServices = Get.find();
   @override
   gotosignup() {
     Get.toNamed(Approutes.signup);
@@ -51,7 +54,17 @@ class LogInControllerImp extends LogInController {
       reqeuststate = handlingData(response);
       if (reqeuststate == requeststatus.success) {
         if (response["status"] == "success") {
-          Get.offAllNamed(Approutes.home);
+          try {
+            saveUserData(response['data']['users_id'], response['data']['users_name'], response['data']['users_email'], response['data']['users_password'], response['data']['users_phone']);
+            Get.offAllNamed(Approutes.home);
+          } catch (e) {
+            print("(???????????????????????????????$e)");
+            defultDialog("Warning!!", "save user data error sorry try later", "Cancle", "try again", 60, 10, () {
+              Get.offAllNamed(Approutes.login);
+            }, () {
+              Get.back();
+            });
+          }
         } else if (response["message"] == "xapprove") {
           reqeuststate = requeststatus.xapprove;
           defultDialog("Warning!!", "You need to verify your email first press verify and check your email we have sent you verification code", "Cancle", "Verify", 60, 10, () {
@@ -83,6 +96,9 @@ class LogInControllerImp extends LogInController {
 
   @override
   void onInit() {
+    FirebaseMessaging.instance.getToken().then((value) {
+      print("********$value");
+    });
     loginformstate = GlobalKey();
     email = TextEditingController();
     password = TextEditingController();

@@ -10,7 +10,10 @@ class MyMiddleWare extends GetMiddleware {
 
   @override
   RouteSettings? redirect(String? route) {
-    if (myServices.sharedPrefs!.getBool("onboardingdone") == true) {
+    if (myServices.sharedPrefs!.getString("step") == "2") {
+      return const RouteSettings(name: Approutes.home);
+    }
+    if (myServices.sharedPrefs!.getString("step") == "1") {
       return const RouteSettings(name: Approutes.login);
     }
     //return const RouteSettings(name: Approutes.language); wronnnng
