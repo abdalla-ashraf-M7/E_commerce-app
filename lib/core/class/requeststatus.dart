@@ -5,5 +5,7 @@ enum requeststatus {
   serverFailaur,
   offlineFailaur,
   xapprove,
-  unknown;
+  unknown,
+  unknown2,
+  unequalpasswords,
 }

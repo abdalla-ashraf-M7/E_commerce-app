@@ -2,6 +2,7 @@ import 'package:e_commerce/core/class/requeststatus.dart';
 import 'package:e_commerce/core/constant/approutes.dart';
 import 'package:e_commerce/core/functions/handlingdata.dart';
 import 'package:e_commerce/data/datasource/remote/auth/logindata.dart';
+import 'package:e_commerce/view/widgets/defaultdialog.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -46,21 +47,37 @@ class LogInControllerImp extends LogInController {
       reqeuststate = requeststatus.loading;
       update();
       var response = await loginData.getData(email!.text, password!.text);
-      print("**********************$response");
+      print("22222222222222222222222222$response");
       reqeuststate = handlingData(response);
       if (reqeuststate == requeststatus.success) {
         if (response["status"] == "success") {
-          Get.toNamed(Approutes.home);
+          Get.offAllNamed(Approutes.home);
         } else if (response["message"] == "xapprove") {
           reqeuststate = requeststatus.xapprove;
+          defultDialog("Warning!!", "You need to verify your email first press verify and check your email we have sent you verification code", "Cancle", "Verify", 60, 10, () {
+            Get.offAllNamed(Approutes.login);
+          }, () {
+            Get.toNamed(Approutes.verifyemailsignup, arguments: {"email": email!.text});
+          });
         } else if (response["message"] == "xwrong") {
           reqeuststate = requeststatus.failaur;
+          defultDialog("Warning!!", "Email or passowrd is not correct", "Cancle", "Try Again", 60, 10, () {
+            Get.offAllNamed(Approutes.login);
+          }, () {
+            Get.back();
+          });
         } else {
-          reqeuststate == requeststatus.unknown;
+          reqeuststate == requeststatus.unknown2;
         }
-        print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ $reqeuststate");
-        update();
+      } else if (reqeuststate == requeststatus.unknown) {
+        defultDialog("Warning!!", "Sorry it is unkown error try later", "Cancle", "Try Again", 60, 10, () {
+          Get.offAllNamed(Approutes.login);
+        }, () {
+          Get.back();
+        });
       }
+      print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ $reqeuststate");
+      update();
     }
   }
 

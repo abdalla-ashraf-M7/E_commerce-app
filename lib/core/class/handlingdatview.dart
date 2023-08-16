@@ -24,3 +24,21 @@ class HandlinDataView extends StatelessWidget {
                             : widget;
   }
 }
+
+class HandlinDataRequest extends StatelessWidget {
+  const HandlinDataRequest({super.key, required this.requeststat, required this.widget});
+  final requeststatus requeststat;
+  final Widget widget;
+  @override
+  Widget build(BuildContext context) {
+    return requeststat == requeststatus.loading
+        ? Center(child: Lottie.asset(Appimageassets.loading, width: 300))
+        : requeststat == requeststatus.offlineFailaur
+            ? Center(child: Lottie.asset(Appimageassets.offline, width: 600))
+            : requeststat == requeststatus.serverFailaur
+                ? Center(child: Lottie.asset(Appimageassets.server, width: 300))
+                : requeststat == requeststatus.unknown
+                    ? const Center(child: Center(child: Text("unknown error")))
+                    : widget;
+  }
+}

@@ -2,6 +2,7 @@ import 'package:e_commerce/core/class/requeststatus.dart';
 import 'package:e_commerce/core/constant/approutes.dart';
 import 'package:e_commerce/core/functions/handlingdata.dart';
 import 'package:e_commerce/data/datasource/remote/auth/verifysignupdata.dart';
+import 'package:e_commerce/view/widgets/defaultdialog.dart';
 import 'package:get/get.dart';
 
 abstract class VerifyEmailSignupController extends GetxController {
@@ -18,13 +19,18 @@ class VerifyEmailSignupControllerImp extends VerifyEmailSignupController {
     requeststate = requeststatus.loading;
     update();
     var response = await verifySignupData.getData(email, verifycode);
-    print("++++++++++++++++++$response+++++++++++++++");
+    print("4444444444444444444$response");
     requeststate = handlingData(response);
     if (requeststate == requeststatus.success) {
       if (response["status"] == "success") {
-        Get.toNamed(Approutes.sucesssignup);
+        Get.offNamed(Approutes.sucesssignup);
       } else {
         requeststate = requeststatus.failaur;
+        defultDialog("Warning!!", "Verification Code is not correct", "Cancle", "Try Again", 60, 10, () {
+          Get.offAllNamed(Approutes.login);
+        }, () {
+          Get.back();
+        });
       }
       {}
     }

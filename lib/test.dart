@@ -1,5 +1,6 @@
-import 'package:e_commerce/core/constant/colors.dart';
+/* import 'package:e_commerce/core/constant/colors.dart';
 import 'package:e_commerce/core/functions/checkinternet.dart';
+import 'package:e_commerce/view/widgets/defaultdialog.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -27,13 +28,17 @@ class _TestState extends State<Test> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(title: Text("Test")),
-        body: const WillPopScope(
-            onWillPop: exitAlert,
-            child: Center(
-                child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [],
-            ))));
+        body: Center(
+            child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ElevatedButton(
+                onPressed: () {
+                  defultDialog("Warning!!", "Content", "Confirm", "Cancel", () {}, () {});
+                },
+                child: Text("show dialog"))
+          ],
+        )));
   }
 }
 
@@ -63,3 +68,4 @@ Future<bool> exitAlert() {
       ]);
   return Future.value(true);
 }
+ */

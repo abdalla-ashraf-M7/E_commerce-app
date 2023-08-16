@@ -28,7 +28,7 @@ class SignUpScreen extends StatelessWidget {
           ),
         ),
         body: GetBuilder<SignUpControllerImp>(
-            builder: (controller) => HandlinDataView(
+            builder: (controller) => HandlinDataRequest(
                 requeststat: controller.requeststate,
                 widget: Container(
                   padding: const EdgeInsets.symmetric(horizontal: 40),

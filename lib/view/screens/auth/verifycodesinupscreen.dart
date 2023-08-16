@@ -1,4 +1,4 @@
-import 'package:e_commerce/controller/auth/verifymailsingnupcontroller.dart';
+import 'package:e_commerce/controller/auth/verifycodesingnupcontroller.dart';
 import 'package:e_commerce/core/class/handlingdatview.dart';
 import 'package:e_commerce/core/constant/colors.dart';
 import 'package:e_commerce/core/constant/imageassets.dart';
@@ -28,7 +28,7 @@ class VerifyEmailSignupScreen extends StatelessWidget {
         ),
       ),
       body: GetBuilder<VerifyEmailSignupControllerImp>(
-          builder: (controller) => HandlinDataView(
+          builder: (controller) => HandlinDataRequest(
               requeststat: controller.requeststate,
               widget: Container(
                 padding: const EdgeInsets.symmetric(horizontal: 40),

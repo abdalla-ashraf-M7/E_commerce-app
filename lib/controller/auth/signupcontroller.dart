@@ -2,6 +2,7 @@ import 'package:e_commerce/core/class/requeststatus.dart';
 import 'package:e_commerce/core/constant/approutes.dart';
 import 'package:e_commerce/core/functions/handlingdata.dart';
 import 'package:e_commerce/data/datasource/remote/auth/signupdata.dart';
+import 'package:e_commerce/view/widgets/defaultdialog.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -44,15 +45,19 @@ class SignUpControllerImp extends SignUpController {
       requeststate = requeststatus.loading;
       update();
       var response = await signUpData.getData(username!.text, email!.text, password!.text, phone!.text);
-      print("**********************************$response");
+      print("333333333333333333333333$response");
       requeststate = handlingData(response);
       if (requeststate == requeststatus.success) {
         if (response["status"] == "success") {
           //data.addAll(response['data']);
-          Get.toNamed(Approutes.verifyemailsignup, arguments: {"email": email!.text});
+          Get.offNamed(Approutes.verifyemailsignup, arguments: {"email": email!.text});
         } else {
-          //Get.defaultDialog(title: "dfdf", middleText: "dfdf");
           requeststate = requeststatus.failaur;
+          defultDialog("Warning!!", "Email or Phone is already used", "Cancle", "Try Again", 60, 10, () {
+            Get.offAllNamed(Approutes.login);
+          }, () {
+            Get.back();
+          });
         }
       } else {}
     }

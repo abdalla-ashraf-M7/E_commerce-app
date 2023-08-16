@@ -33,7 +33,7 @@ class LogInScreen extends StatelessWidget {
         body: WillPopScope(
             onWillPop: exitAlert,
             child: GetBuilder<LogInControllerImp>(
-                builder: (controller) => HandlinDataView(
+                builder: (controller) => HandlinDataRequest(
                     requeststat: controller.reqeuststate,
                     widget: Container(
                       padding: const EdgeInsets.symmetric(horizontal: 40),
@@ -55,7 +55,7 @@ class LogInScreen extends StatelessWidget {
                                 children: [
                                   CustomTextFormAuth(
                                     valid: (val) {
-                                      return ValidInput(val!, 5, 20, "email");
+                                      return ValidInput(val!, 5, 30, "email");
                                     },
                                     hint: "12".tr,
                                     label: "13".tr,
@@ -70,7 +70,7 @@ class LogInScreen extends StatelessWidget {
                                         controller.hidepassword();
                                       },
                                       valid: (val) {
-                                        return ValidInput(val!, 5, 20, "passsword");
+                                        return ValidInput(val!, 5, 30, "passsword");
                                       },
                                       hint: "14".tr,
                                       label: "15".tr,

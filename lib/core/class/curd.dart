@@ -13,14 +13,14 @@ class Crud {
           var responsebody = jsonDecode(response.body);
           return Right(responsebody);
         } else {
-          print("**************************${response.statusCode}");
+          print("11111111111111111111111111${response.statusCode}");
           return left(requeststatus.serverFailaur);
         }
       } else {
         return left(requeststatus.offlineFailaur);
       }
     } catch (_) {
-      return left(requeststatus.serverFailaur);
+      return left(requeststatus.unknown);
     }
   }
 }

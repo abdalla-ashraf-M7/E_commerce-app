@@ -1,4 +1,8 @@
+import 'package:e_commerce/core/class/requeststatus.dart';
 import 'package:e_commerce/core/constant/approutes.dart';
+import 'package:e_commerce/core/functions/handlingdata.dart';
+import 'package:e_commerce/data/datasource/remote/forgetpassword/ressetpassworddata.dart';
+import 'package:e_commerce/view/widgets/defaultdialog.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -14,15 +18,38 @@ class RessetPasswordControllerImp extends RessetPasswordController {
   TextEditingController? password2;
   bool ispasswordhidden = true;
   bool ispasswordhidden2 = true;
-
+  String? email;
+  RessetPasswordData ressetPasswordData = RessetPasswordData(Get.find());
+  requeststatus requeststate = requeststatus.success;
   @override
-  gotosucessressetpassword() {
-    FormState? formdata = ressetPasswordformstate!.currentState;
-    if (formdata!.validate()) {
-      /* if (password1 == password2) {
-        Get.offAllNamed(Approutes.sucessressetpassword);
-      }  */
-      Get.offAllNamed(Approutes.sucessressetpassword);
+  gotosucessressetpassword() async {
+    if (ressetPasswordformstate!.currentState!.validate()) {
+      if (password1!.text == password2!.text) {
+        requeststate = requeststatus.loading;
+        update();
+        var response = await ressetPasswordData.getData(email!, password1!.text);
+        print("################################$response");
+        requeststate = handlingData(response);
+        if (requeststate == requeststatus.success) {
+          if (response["status"] == "success") {
+            Get.offNamed(Approutes.sucessressetpassword);
+          } else {
+            defultDialog("Warning!!", "${response['message']}", "Cancle", "Try Again", 60, 10, () {
+              Get.offAllNamed(Approutes.login);
+            }, () {
+              Get.back();
+            });
+            requeststate = requeststatus.failaur;
+          }
+        }
+      } else {
+        defultDialog("Warning!!", "Passwords are not equal", "Cancle", "Try Again", 60, 10, () {
+          Get.offAllNamed(Approutes.login);
+        }, () {
+          Get.back();
+        });
+      }
+      update();
     }
   }
 
@@ -51,6 +78,7 @@ class RessetPasswordControllerImp extends RessetPasswordController {
     ressetPasswordformstate = GlobalKey();
     password1 = TextEditingController();
     password2 = TextEditingController();
+    email = Get.arguments["email"];
 
     super.onInit();
   }
