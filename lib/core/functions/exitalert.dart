@@ -16,7 +16,7 @@ Future<bool> exitAlert() {
           "Are You Sure That You WantTo Exit The App?",
           textAlign: TextAlign.center,
           style: TextStyle(
-            color: Appcolors.grey,
+            color: Appcolors.grey4,
             fontSize: 20,
           ),
         ),

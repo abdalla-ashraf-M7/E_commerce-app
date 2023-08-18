@@ -34,7 +34,7 @@ class CustomSliderOnBOarding extends GetView<OnBoardingControllerImp> {
                   child: Text(
                     textAlign: TextAlign.center,
                     "${onboardingdatasource[i].body}",
-                    style: const TextStyle(color: Appcolors.grey, fontSize: 18, wordSpacing: 3, height: 1.4),
+                    style: const TextStyle(color: Appcolors.grey4, fontSize: 18, wordSpacing: 3, height: 1.4),
                   ),
                 ),
                 const SizedBox(

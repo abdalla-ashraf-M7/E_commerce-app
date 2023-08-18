@@ -13,8 +13,8 @@ defultDialog(String title, String content, String buttontext1, String buttontext
         child: Text(
           content,
           textAlign: TextAlign.center,
-          style: TextStyle(
-            color: Appcolors.grey,
+          style: const TextStyle(
+            color: Appcolors.grey4,
             fontSize: 20,
           ),
         ),
