@@ -10,6 +10,7 @@ import '../../view/widgets/defaultdialog.dart';
 abstract class HomeController extends GetxController {
   initialdata();
   viewData();
+  catclick(int catnumber, String catname);
 }
 
 MyServices myServices = Get.find();
@@ -56,5 +57,14 @@ class HomeControllerImp extends HomeController {
     initialdata();
     viewData();
     super.onInit();
+  }
+
+  @override
+  catclick(catnumber, catname) {
+    Get.toNamed(Approutes.items, arguments: {
+      "catlist": cats,
+      "catnumber": catnumber,
+      "catname": catname,
+    });
   }
 }

@@ -19,4 +19,7 @@ class AppLinks {
 
   //home
   static const home = "$server/home.php";
+
+  //items
+  static const items = "$server/items/items.php";
 }

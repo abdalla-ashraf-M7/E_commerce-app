@@ -11,6 +11,8 @@ import 'package:e_commerce/view/screens/auth/forgetpassword/verifycodescreen.dar
 import 'package:e_commerce/view/screens/auth/sucesssignupscreen.dart';
 import 'package:e_commerce/view/screens/auth/verifycodesinupscreen.dart';
 import 'package:e_commerce/view/screens/home.dart';
+import 'package:e_commerce/view/screens/homescreen.dart';
+import 'package:e_commerce/view/screens/items/itemsscreen.dart';
 import 'package:e_commerce/view/screens/onboarding/languagescreen.dart';
 import 'package:e_commerce/view/screens/onboarding/onboardingscreen.dart';
 import 'package:e_commerce/view/test_datascreen.dart';
@@ -31,4 +33,5 @@ List<GetPage<dynamic>> routes = [
   GetPage(name: Approutes.sucesssignup, page: () => const ScuccessSignUpScreen()),
   GetPage(name: Approutes.sucessressetpassword, page: () => const ScuccessRessetPasswordScreen()),
   GetPage(name: Approutes.home, page: () => const HomeScreen()),
+  GetPage(name: Approutes.items, page: () => const ItemsScreen()),
 ];

@@ -22,7 +22,7 @@ class CustomListViewItems extends GetView<HomeControllerImp> {
           );
         },
         itemBuilder: (BuildContext context, int index) {
-          return ItemsDiscountInPage(itemsDiscountModel: ItemsDiscountModel.fromJson(controller.items[index]));
+          return ItemsDiscountInPage(itemsDiscountModel: ItemsModel.fromJson(controller.items[index]));
         },
       ),
     );
@@ -31,7 +31,7 @@ class CustomListViewItems extends GetView<HomeControllerImp> {
 
 class ItemsDiscountInPage extends StatelessWidget {
   const ItemsDiscountInPage({super.key, required this.itemsDiscountModel});
-  final ItemsDiscountModel itemsDiscountModel;
+  final ItemsModel itemsDiscountModel;
   @override
   Widget build(BuildContext context) {
     return Stack(

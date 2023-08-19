@@ -12,7 +12,7 @@ class CustomListViewCats extends GetView<HomeControllerImp> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 130,
+      height: 120,
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
         itemCount: controller.cats.length,
@@ -23,6 +23,7 @@ class CustomListViewCats extends GetView<HomeControllerImp> {
         },
         itemBuilder: (BuildContext context, int index) {
           return CategoriesInPage(
+            catnumber: index,
             catsModelInPage: CategoriesModel.fromJson(controller.cats[index]),
           );
         },
@@ -31,34 +32,41 @@ class CustomListViewCats extends GetView<HomeControllerImp> {
   }
 }
 
-class CategoriesInPage extends StatelessWidget {
+class CategoriesInPage extends GetView<HomeControllerImp> {
   const CategoriesInPage({
     super.key,
     required this.catsModelInPage,
+    required this.catnumber,
   });
   final CategoriesModel catsModelInPage;
+  final int catnumber;
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Container(
-          decoration: const BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(15)), color: Appcolors.pink1),
-          width: 70,
-          height: 90,
-          child: SvgPicture.network(
-            "${AppLinks.catsimages}/${catsModelInPage.catsImage}",
-            colorFilter: const ColorFilter.mode(Appcolors.red3, BlendMode.srcIn),
+    return InkWell(
+      onTap: () {
+        controller.catclick(catnumber, controller.cats[catnumber]['cats_name']);
+      },
+      child: Column(
+        children: [
+          Container(
+            decoration: const BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(15)), color: Appcolors.pink1),
+            width: 70,
+            height: 80,
+            child: SvgPicture.network(
+              "${AppLinks.catsimages}/${catsModelInPage.catsImage}",
+              colorFilter: const ColorFilter.mode(Appcolors.red3, BlendMode.srcIn),
+            ),
           ),
-        ),
-        const SizedBox(
-          height: 5,
-        ),
-        Text(
-          "${catsModelInPage.catsName}",
-          textAlign: TextAlign.center,
-          style: const TextStyle(color: Appcolors.night2, fontSize: 18, fontWeight: FontWeight.w600),
-        ),
-      ],
+          const SizedBox(
+            height: 5,
+          ),
+          Text(
+            "${catsModelInPage.catsName}",
+            textAlign: TextAlign.center,
+            style: const TextStyle(color: Appcolors.night2, fontSize: 18, fontWeight: FontWeight.w600),
+          ),
+        ],
+      ),
     );
   }
 }

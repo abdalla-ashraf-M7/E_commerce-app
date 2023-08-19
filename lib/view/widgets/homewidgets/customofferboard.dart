@@ -18,7 +18,7 @@ class CustomOfferBoard extends StatelessWidget {
               padding: EdgeInsets.only(bottom: 15),
               child: Text(
                 text1,
-                style: const TextStyle(color: Appcolors.night1, fontSize: 25),
+                style: const TextStyle(color: Appcolors.night2, fontSize: 25),
               ),
             ),
             subtitle: Text(
