@@ -1,6 +1,7 @@
 import 'package:e_commerce/core/class/requeststatus.dart';
 import 'package:e_commerce/core/constant/approutes.dart';
 import 'package:e_commerce/core/functions/handlingdata.dart';
+import 'package:e_commerce/data/datasource/remote/auth/logindata.dart';
 import 'package:e_commerce/data/datasource/remote/auth/verifysignupdata.dart';
 import 'package:e_commerce/view/widgets/defaultdialog.dart';
 import 'package:get/get.dart';
@@ -13,6 +14,8 @@ class VerifyEmailSignupControllerImp extends VerifyEmailSignupController {
   late String verifycode;
   late String email;
   requeststatus requeststate = requeststatus.success;
+  LoginData loginData = LoginData(Get.find());
+
   @override
   gotosucesssignup() async {
     VerifySignupData verifySignupData = VerifySignupData(Get.find());
@@ -35,6 +38,12 @@ class VerifyEmailSignupControllerImp extends VerifyEmailSignupController {
       {}
     }
     update();
+  }
+
+  resendcode() {
+    loginData.resendCode(email);
+    Get.rawSnackbar(title: "note", message: "a new code is setnt to your email successfully");
+    print("resend code excuted");
   }
 
   @override

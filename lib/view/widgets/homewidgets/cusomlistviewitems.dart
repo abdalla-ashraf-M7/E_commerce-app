@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:e_commerce/controller/home/homecontroller.dart';
 import 'package:e_commerce/core/constant/applinks.dart';
 import 'package:e_commerce/core/constant/colors.dart';
@@ -40,8 +41,8 @@ class ItemsDiscountInPage extends StatelessWidget {
         SizedBox(
           height: 140,
           width: 200,
-          child: Image.network(
-            "${AppLinks.itmesimages}/${itemsDiscountModel.itemsImage}",
+          child: CachedNetworkImage(
+            imageUrl: "${AppLinks.itmesimages}/${itemsDiscountModel.itemsImage}",
             fit: BoxFit.fill,
           ),
         ),

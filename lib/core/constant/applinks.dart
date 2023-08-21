@@ -11,6 +11,7 @@ class AppLinks {
   static const signup = "$server/auth/signup.php";
   static const verifysignup = "$server/auth/verifycode.php";
   static const login = "$server/auth/login.php";
+  static const resendcode = "$server/auth/resendcode.php";
 
   //forgetpassword
   static const forgetpassword = "$server/forgetpassword/forgetpassword.php";
@@ -22,4 +23,10 @@ class AppLinks {
 
   //items
   static const items = "$server/items/items.php";
+
+  //fav
+  static const addfav = "$server/fav/addfav.php";
+  static const deletefav = "$server/fav/deletefav.php";
+  static const myfav = "$server/fav/myfav.php";
+  static const deletefavfromfavscreen = "$server/fav/deletefromfavscreen.php";
 }

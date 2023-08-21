@@ -56,7 +56,7 @@ class LogInControllerImp extends LogInController {
         if (response["status"] == "success") {
           try {
             saveUserData(response['data']['users_id'], response['data']['users_name'], response['data']['users_email'], response['data']['users_password'], response['data']['users_phone']);
-            Get.offAllNamed(Approutes.home);
+            Get.offAllNamed(Approutes.homescreen);
           } catch (e) {
             print("(???????????????????????????????$e)");
             defultDialog("Warning!!", "save user data error sorry try later", "Cancle", "try again", 60, 10, () {

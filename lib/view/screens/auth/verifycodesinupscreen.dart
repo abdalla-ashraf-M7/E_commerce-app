@@ -64,7 +64,12 @@ class VerifyEmailSignupScreen extends StatelessWidget {
                       }, // end onSubmit
                     ),
                     const SizedBox(height: 30),
-                    CustomRowSignAuth(text1: "30".tr, text2: "31".tr, tap: () {})
+                    CustomRowSignAuth(
+                        text1: "30".tr,
+                        text2: "31".tr,
+                        tap: () {
+                          controller.resendcode();
+                        })
                   ],
                 ),
               ))),

@@ -35,7 +35,7 @@ class CustomOfferBoard extends StatelessWidget {
             width: 190,
             decoration: const BoxDecoration(
               shape: BoxShape.circle,
-              color: Appcolors.red2,
+              color: Appcolors.orange1,
             ),
           ),
         )

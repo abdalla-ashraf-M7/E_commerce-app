@@ -1,4 +1,7 @@
-class ItemsModel {
+class MyFavModel {
+  String? favId;
+  String? favUsers;
+  String? favItems;
   String? itemsId;
   String? itemsName;
   String? itemsNameAr;
@@ -11,15 +14,13 @@ class ItemsModel {
   String? itemsDiscount;
   String? itemsDate;
   String? itemsCats;
-  String? catsId;
-  String? catsName;
-  String? catsNameAr;
-  String? catsImage;
-  String? catsDate;
-  String? favs;
+  String? usersId;
 
-  ItemsModel(
-      {this.itemsId,
+  MyFavModel(
+      {this.favId,
+      this.favUsers,
+      this.favItems,
+      this.itemsId,
       this.itemsName,
       this.itemsNameAr,
       this.itemsDesc,
@@ -31,14 +32,12 @@ class ItemsModel {
       this.itemsDiscount,
       this.itemsDate,
       this.itemsCats,
-      this.catsId,
-      this.catsName,
-      this.catsNameAr,
-      this.catsImage,
-      this.catsDate,
-      this.favs});
+      this.usersId});
 
-  ItemsModel.fromJson(Map<String, dynamic> json) {
+  MyFavModel.fromJson(Map<String, dynamic> json) {
+    favId = json['fav_id'];
+    favUsers = json['fav_users'];
+    favItems = json['fav_items'];
     itemsId = json['items_id'];
     itemsName = json['items_name'];
     itemsNameAr = json['items_name_ar'];
@@ -51,16 +50,14 @@ class ItemsModel {
     itemsDiscount = json['items_discount'];
     itemsDate = json['items_date'];
     itemsCats = json['items_cats'];
-    catsId = json['cats_id'];
-    catsName = json['cats_name'];
-    catsNameAr = json['cats_name_ar'];
-    catsImage = json['cats_image'];
-    catsDate = json['cats_date'];
-    favs = json['favs'];
+    usersId = json['users_id'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['fav_id'] = this.favId;
+    data['fav_users'] = this.favUsers;
+    data['fav_items'] = this.favItems;
     data['items_id'] = this.itemsId;
     data['items_name'] = this.itemsName;
     data['items_name_ar'] = this.itemsNameAr;
@@ -73,12 +70,7 @@ class ItemsModel {
     data['items_discount'] = this.itemsDiscount;
     data['items_date'] = this.itemsDate;
     data['items_cats'] = this.itemsCats;
-    data['cats_id'] = this.catsId;
-    data['cats_name'] = this.catsName;
-    data['cats_name_ar'] = this.catsNameAr;
-    data['cats_image'] = this.catsImage;
-    data['cats_date'] = this.catsDate;
-    data['favs'] = this.favs;
+    data['users_id'] = this.usersId;
     return data;
   }
 }

@@ -11,6 +11,7 @@ abstract class HomeController extends GetxController {
   initialdata();
   viewData();
   catclick(int catnumber, String catname);
+  gotofavorite();
 }
 
 MyServices myServices = Get.find();
@@ -66,5 +67,10 @@ class HomeControllerImp extends HomeController {
       "catnumber": catnumber,
       "catname": catname,
     });
+  }
+
+  @override
+  gotofavorite() {
+    Get.toNamed(Approutes.favorite);
   }
 }

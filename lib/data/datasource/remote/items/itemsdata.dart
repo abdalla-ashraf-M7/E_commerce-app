@@ -6,8 +6,8 @@ class ItemsData {
   Crud crud = Get.find();
   ItemsData(this.crud);
 
-  getData() async {
-    var response = await crud.postData(AppLinks.items, {});
+  getData(String userid) async {
+    var response = await crud.postData(AppLinks.items, {"userid": userid});
     return response.fold((l) => l, (r) => r);
   }
 }
