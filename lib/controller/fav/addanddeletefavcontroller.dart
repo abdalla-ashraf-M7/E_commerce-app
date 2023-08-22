@@ -1,3 +1,4 @@
+import 'package:e_commerce/controller/home/homecontroller.dart';
 import 'package:e_commerce/core/class/requeststatus.dart';
 import 'package:e_commerce/core/services/services.dart';
 import 'package:e_commerce/data/datasource/remote/fav/myfavdata.dart';
@@ -5,7 +6,7 @@ import 'package:e_commerce/data/model/myfavmodel.dart';
 import 'package:get/get.dart';
 import '../../core/functions/handlingdata.dart';
 
-abstract class FavController extends GetxController {
+abstract class FavController extends MixSearchController {
   addfav(String itemid);
   deletefav(String itemid);
   initialdata();

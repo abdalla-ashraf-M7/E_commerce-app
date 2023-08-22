@@ -1,16 +1,16 @@
+import 'package:e_commerce/controller/home/homecontroller.dart';
 import 'package:e_commerce/core/class/requeststatus.dart';
 import 'package:e_commerce/core/constant/approutes.dart';
 import 'package:e_commerce/core/functions/handlingdata.dart';
 import 'package:e_commerce/core/services/services.dart';
 import 'package:e_commerce/data/datasource/remote/items/itemsdata.dart';
-import 'package:e_commerce/data/model/itemsmodel.dart';
 import 'package:get/get.dart';
 
-abstract class ItemsController extends GetxController {
+abstract class ItemsController extends MixSearchController {
   initialdata();
   changecatnumber(int i);
   getItems();
-  gotoitemsdetails(ItemsModel theModel);
+  //gotoitemsdetails(ItemsModel theModel);
   filterlist(String catname);
   gotofavorite();
 }
@@ -40,7 +40,7 @@ class ItemsControllerImp extends ItemsController {
     update();
   }
 
-  requeststatus? requeststate;
+  // requeststatus? requeststate;
   ItemsData itemsData = ItemsData(Get.find());
   @override
   getItems() async {

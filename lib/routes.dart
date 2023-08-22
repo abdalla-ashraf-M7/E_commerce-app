@@ -10,6 +10,7 @@ import 'package:e_commerce/view/screens/auth/signup.dart';
 import 'package:e_commerce/view/screens/auth/forgetpassword/verifycodescreen.dart';
 import 'package:e_commerce/view/screens/auth/sucesssignupscreen.dart';
 import 'package:e_commerce/view/screens/auth/verifycodesinupscreen.dart';
+import 'package:e_commerce/view/screens/cart/cartscreen.dart';
 import 'package:e_commerce/view/screens/favorite/myfavscreen.dart';
 import 'package:e_commerce/view/screens/pagesinhomescreen/home.dart';
 import 'package:e_commerce/view/screens/homescreen.dart';
@@ -22,6 +23,7 @@ import 'package:get/get.dart';
 
 List<GetPage<dynamic>> routes = [
   GetPage(name: Approutes.language, page: () => const LanguageScreen(), middlewares: [MyMiddleWare()]),
+  //GetPage(name: '/', page: () => const CartScreen()),
   GetPage(name: Approutes.login, page: () => const LogInScreen()),
   //GetPage(name: "/", page: () => const Test()),
 
@@ -38,4 +40,5 @@ List<GetPage<dynamic>> routes = [
   GetPage(name: Approutes.items, page: () => const ItemsScreen()),
   GetPage(name: Approutes.itemsdetails, page: () => const ItemsDetailsScreen()),
   GetPage(name: Approutes.favorite, page: () => const MyfavScreen()),
+  GetPage(name: Approutes.cart, page: () => const CartScreen()),
 ];

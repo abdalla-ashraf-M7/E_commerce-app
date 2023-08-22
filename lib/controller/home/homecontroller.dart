@@ -1,13 +1,14 @@
 import 'package:e_commerce/core/class/requeststatus.dart';
 import 'package:e_commerce/core/services/services.dart';
 import 'package:e_commerce/data/datasource/remote/homedata.dart';
+import 'package:e_commerce/data/model/itemsmodel.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import '../../core/constant/approutes.dart';
 import '../../core/functions/handlingdata.dart';
 import '../../view/widgets/defaultdialog.dart';
 
-abstract class HomeController extends GetxController {
+abstract class HomeController extends MixSearchController {
   initialdata();
   viewData();
   catclick(int catnumber, String catname);
@@ -20,7 +21,6 @@ HomeData homeData = HomeData(Get.find());
 class HomeControllerImp extends HomeController {
   String? id;
   String? username;
-  requeststatus requeststate = requeststatus.success;
   List cats = [];
   List items = [];
 
@@ -72,5 +72,63 @@ class HomeControllerImp extends HomeController {
   @override
   gotofavorite() {
     Get.toNamed(Approutes.favorite);
+  }
+}
+
+class MixSearchController extends GetxController {
+  TextEditingController controllerhome = TextEditingController();
+  bool isSearch = false;
+  requeststatus requeststate = requeststatus.success;
+  List<ItemsModel> searchlist = [];
+
+  viewSearch() async {
+    searchlist.clear();
+    requeststate = requeststatus.loading;
+    update();
+    var response = await homeData.searchData(controllerhome.text);
+    print("99999999999searchinhome999999999$response");
+    requeststate = handlingData(response);
+    if (requeststate == requeststatus.success) {
+      if (response["status"] == "success") {
+        List resposedata = response['data'];
+        searchlist.addAll(resposedata.map((e) => ItemsModel.fromJson(e)));
+      } else {
+        Get.rawSnackbar(title: "Obss!!", message: "Sorry There is No products with this name");
+      }
+    } else {}
+    update();
+  }
+
+  onWrite() {
+    if (controllerhome.text == "" || controllerhome.text.isEmpty) {
+      isSearch = false;
+    }
+    update();
+  }
+
+  onSearch() {
+    if (controllerhome.text == "" || controllerhome.text.isEmpty) {
+    } else {
+      isSearch = true;
+      viewSearch();
+      update();
+    }
+  }
+
+  onXpress() {
+    FocusManager.instance.primaryFocus?.unfocus();
+    controllerhome.text = "";
+    isSearch = false;
+    // Get.back();
+    update();
+  }
+
+  gotoitemsdetails(theModel) {
+    Get.toNamed(Approutes.itemsdetails, arguments: {"itemmodel": theModel});
+  }
+
+  @override
+  void onInit() {
+    super.onInit();
   }
 }

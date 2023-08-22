@@ -4,8 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class CustomRowAddAndDeleteAndPrice extends GetView<ItemsDetailsControllerImp> {
-  const CustomRowAddAndDeleteAndPrice({super.key});
-
+  const CustomRowAddAndDeleteAndPrice({
+    super.key,
+    this.ontapadd,
+    this.ontapdelete,
+  });
+  final void Function()? ontapadd;
+  final void Function()? ontapdelete;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -13,10 +18,13 @@ class CustomRowAddAndDeleteAndPrice extends GetView<ItemsDetailsControllerImp> {
       children: [
         Row(
           children: [
-            const Icon(
-              Icons.remove,
-              color: Appcolors.red2,
-              size: 30,
+            InkWell(
+              onTap: ontapdelete,
+              child: Icon(
+                Icons.remove,
+                color: Appcolors.red2,
+                size: 30,
+              ),
             ),
             Container(
               margin: const EdgeInsets.symmetric(horizontal: 10),
@@ -24,15 +32,18 @@ class CustomRowAddAndDeleteAndPrice extends GetView<ItemsDetailsControllerImp> {
               alignment: AlignmentDirectional.center,
               height: 50,
               width: 50,
-              child: const Text(
-                "1",
+              child: Text(
+                "${controller.cartcount}",
                 style: TextStyle(fontSize: 20, color: Appcolors.night2),
               ),
             ),
-            const Icon(
-              Icons.add,
-              color: Appcolors.red2,
-              size: 30,
+            InkWell(
+              onTap: ontapadd,
+              child: const Icon(
+                Icons.add,
+                color: Appcolors.red2,
+                size: 30,
+              ),
             ),
           ],
         ),

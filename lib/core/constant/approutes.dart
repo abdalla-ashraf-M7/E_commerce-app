@@ -23,4 +23,7 @@ class Approutes {
 
   //favorite
   static const String favorite = "/favorite";
+
+  //cart
+  static const String cart = "/cart";
 }

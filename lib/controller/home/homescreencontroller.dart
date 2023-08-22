@@ -1,3 +1,4 @@
+import 'package:e_commerce/core/constant/approutes.dart';
 import 'package:e_commerce/view/screens/pagesinhomescreen/home.dart';
 import 'package:e_commerce/view/screens/pagesinhomescreen/settingscreen.dart';
 import 'package:flutter/material.dart';
@@ -5,6 +6,7 @@ import 'package:get/get.dart';
 
 abstract class HomeScreenController extends GetxController {
   changepage(int i);
+  gotocart();
 }
 
 class HOmeScreenControllerImp extends HomeScreenController {
@@ -24,5 +26,10 @@ class HOmeScreenControllerImp extends HomeScreenController {
   changepage(int i) {
     currentpage = i;
     update();
+  }
+
+  @override
+  gotocart() {
+    Get.toNamed(Approutes.cart);
   }
 }
