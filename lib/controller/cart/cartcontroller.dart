@@ -4,6 +4,8 @@ import 'package:e_commerce/core/functions/handlingdata.dart';
 import 'package:e_commerce/core/services/services.dart';
 import 'package:e_commerce/data/datasource/remote/cart/cartdata.dart';
 import 'package:e_commerce/data/model/cartviewmodel.dart';
+import 'package:e_commerce/data/model/copounmodel.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
 abstract class CartController extends GetxController {
@@ -14,6 +16,8 @@ abstract class CartController extends GetxController {
   initialData();
   gotocart();
   refreshcart();
+  getCopoun(String name);
+  gotoOrder();
   // plusonecart(int i);
   // minusonecart(int i);
 }
@@ -24,12 +28,46 @@ class CartControllerImp extends CartController {
   MyServices myServices = Get.find();
   List<CartViewModel> data = [];
   double databaseCartTatalprice = 0.0;
+  double databaseCartTatalpriceAfterDiscount = 0.0;
+  double copoundiscount = 0.0;
   int databaseCartCount = 0;
-  int itemcount = 0;
+  CopounModel? copounModel;
+  TextEditingController? copouncontroller;
+  bool isCopounValid = false;
+  GlobalKey<FormState>? copounkey;
+
+  @override
+  cartVeiw() async {
+    requeststate = requeststatus.loading;
+    update();
+    var response = await cartData.cartview("${myServices.sharedPrefs!.getString('id')}");
+    print("8888888888888cartview888888888$response");
+    requeststate = handlingData(response);
+    if (requeststate == requeststatus.success) {
+      if (response['status'] == 'success') {
+        if (response['data']['status'] == 'success') {
+          List responsedata = response['data']['data'];
+          data.addAll(responsedata.map((e) => CartViewModel.fromJson(e)));
+          databaseCartTatalprice = double.parse(response['countprice']['itemtotalprice']);
+          databaseCartTatalpriceAfterDiscount = double.parse(response['countprice']['itemtotalpriceafterdiscount']);
+          databaseCartCount = int.parse(response['countprice']['totalcount']);
+          print("++++++++++++++++++++++++++++${databaseCartTatalprice}");
+        }
+      } else {
+        requeststate = requeststatus.failaur;
+      }
+    } else {
+      requeststate = requeststatus.serverFailaur;
+    }
+    update();
+  }
 
   @override
   initialData() {
     cartVeiw();
+    copounModel = CopounModel();
+    copouncontroller = TextEditingController();
+    copounkey = GlobalKey<FormState>();
   }
 
   @override
@@ -93,28 +131,28 @@ class CartControllerImp extends CartController {
   }
 
   @override
-  cartVeiw() async {
-    requeststate = requeststatus.loading;
-    update();
-    var response = await cartData.cartview("${myServices.sharedPrefs!.getString('id')}");
-    print("8888888888888cartview888888888$response");
-    requeststate = handlingData(response);
-    if (requeststate == requeststatus.success) {
-      if (response['status'] == 'success') {
-        if (response['data']['status'] == 'success') {
-          List responsedata = response['data']['data'];
-          data.addAll(responsedata.map((e) => CartViewModel.fromJson(e)));
-          databaseCartTatalprice = double.parse(response['countprice']['totalprice']);
-          databaseCartCount = int.parse(response['countprice']['totalcount']);
-          print("++++++++++++++++++++++++++++${databaseCartTatalprice}");
+  getCopoun(name) async {
+    if (copounkey!.currentState!.validate()) {
+      requeststate = requeststatus.loading;
+      update();
+      var response = await cartData.getCopoun(name);
+      print("8888888888888getCopoun888888888$response");
+      requeststate = handlingData(response);
+      if (requeststate == requeststatus.success) {
+        if (response['status'] == 'success') {
+          Map<String, dynamic> responedata = response['data'];
+          copounModel = CopounModel.fromJson(responedata);
+          isCopounValid = true;
+          copoundiscount = double.parse("${copounModel!.copounDiscount}");
+        } else {
+          Get.rawSnackbar(title: "Sorry", message: "this Copoun is't Valid");
         }
       } else {
-        requeststate = requeststatus.failaur;
+        requeststate = requeststatus.serverFailaur;
       }
-    } else {
-      requeststate = requeststatus.serverFailaur;
+      copouncontroller!.text = '';
+      update();
     }
-    update();
   }
 
   @override
@@ -128,7 +166,14 @@ class CartControllerImp extends CartController {
     data.clear();
     databaseCartCount = 0;
     databaseCartTatalprice = 0.0;
+    databaseCartTatalpriceAfterDiscount = 0.0;
+    copoundiscount = 0.0;
     cartVeiw();
+  }
+
+  @override
+  gotoOrder() {
+    Get.toNamed(Approutes.order);
   }
 //i made them trying to remove the loading in cart screen when add adn remove lidke itemsdetails
 /*   @override

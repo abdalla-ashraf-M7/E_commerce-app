@@ -52,7 +52,11 @@ class SettingsScreen extends StatelessWidget {
                             (index) => Card(
                                     child: ListTile(
                                   onTap: () {
-                                    controller.logout();
+                                    index == 4
+                                        ? controller.logout()
+                                        : index == 1
+                                            ? controller.goToAddress()
+                                            : print("dfd");
                                   },
                                   contentPadding: const EdgeInsetsDirectional.symmetric(horizontal: 10, vertical: 8),
                                   title: Text(

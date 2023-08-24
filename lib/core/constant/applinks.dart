@@ -5,8 +5,8 @@ class AppLinks {
   //images
   static const catsimages = "$imagestatic/cats";
   static const itmesimages = "$imagestatic/items";
-
   static const test = "$server/test.php";
+
   //auth
   static const signup = "$server/auth/signup.php";
   static const verifysignup = "$server/auth/verifycode.php";
@@ -32,9 +32,15 @@ class AppLinks {
   static const deletefavfromfavscreen = "$server/fav/deletefromfavscreen.php";
 
   //cart
-
   static const addcart = "$server/cart/add.php";
   static const deletecart = "$server/cart/delete.php";
   static const viewcart = "$server/cart/view.php";
   static const getcartcount = "$server/cart/getcartcount.php";
+  static const copoun = "$server/copoun/get.php";
+
+  //address
+  static const addressAdd = "$server/address/add.php";
+  static const addressEdit = "$server/address/edit.php";
+  static const addressDelete = "$server/address/delete.php";
+  static const addressView = "$server/address/view.php";
 }

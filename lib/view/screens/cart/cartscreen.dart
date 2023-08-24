@@ -1,6 +1,5 @@
 import 'package:e_commerce/controller/cart/cartcontroller.dart';
 import 'package:e_commerce/core/class/handlingdatview.dart';
-import 'package:e_commerce/view/widgets/cart/customappbarcart.dart';
 import 'package:e_commerce/view/widgets/cart/customcardcart.dart';
 import 'package:e_commerce/view/widgets/cart/customnavigationbarcart.dart';
 import 'package:e_commerce/view/widgets/cart/customnumberofcarts.dart';
@@ -14,18 +13,27 @@ class CartScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     Get.put(CartControllerImp());
     return Scaffold(
+        appBar: AppBar(
+            title: Text(
+          "My Cart",
+        )),
         bottomNavigationBar: GetBuilder<CartControllerImp>(
             builder: (controller) => HandlinDataView(
                 requeststat: controller.requeststate,
-                widget: CustomBottomNavigationCart(text: "Place Order", icon: Icons.outbond_rounded, databasetotalprice: controller.databaseCartTatalprice, shipping: 10))),
+                widget: CustomBottomNavigationCart(
+                  ontap: () {
+                    controller.gotoOrder();
+                  },
+                  text: "Place Order",
+                  icon: Icons.outbond_rounded,
+                  databasetotalprice: controller.databaseCartTatalpriceAfterDiscount,
+                  shipping: 10,
+                ))),
         // ),
         body: GetBuilder<CartControllerImp>(
           builder: (controller) => ListView(
             children: [
               const SizedBox(height: 10),
-              CustomAppBarCart(onTabBackIcon: () {
-                Get.back();
-              }),
               const SizedBox(height: 10),
               CustomNumberOfCart(
                 numberofcart: 'You have ${controller.databaseCartCount} products in your Cart',
@@ -37,6 +45,7 @@ class CartScreen extends StatelessWidget {
                 itemCount: controller.data.length,
                 itemBuilder: (BuildContext context, int index) {
                   return CustomCardCart(
+                      i: index,
                       ontapadd: () async {
                         await controller.addcart("${controller.data[index].itemsId}");
                         controller.refreshcart();
@@ -47,7 +56,7 @@ class CartScreen extends StatelessWidget {
                       },
                       imagename: "${controller.data[index].itemsImage}",
                       itemname: "${controller.data[index].itemsName}",
-                      itemprice: "${controller.data[index].itemsPrice}",
+                      itemprice: "${controller.data[index].itemtotalprice}",
                       itemcount: int.parse("${controller.data[index].itemcount}"));
                 },
               ),

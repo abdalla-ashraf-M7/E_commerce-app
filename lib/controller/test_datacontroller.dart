@@ -1,32 +1,33 @@
-/* import 'package:e_commerce/core/class/requeststatus.dart';
-import 'package:e_commerce/core/functions/handlingdata.dart';
-import 'package:e_commerce/data/datasource/remote/test_data.dart';
+import 'dart:async';
+
+import 'package:e_commerce/core/class/requeststatus.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
-class TestDataController extends GetxController {
-  TestData testData = TestData(Get.find());
+class TestController extends GetxController {
+  Completer<GoogleMapController>? completercontroller;
+  Position? position;
+  CameraPosition? kGooglePlex;
+  requeststatus requeststate = requeststatus.loading;
 
-  late requeststatus requeststate;
-  List data = [];
-
-  getData2() async {
-    requeststate = requeststatus.loading;
-    var response = await testData.getData();
-    requeststate = handlingData(response);
-    if (requeststate == requeststatus.success) {
-      if (response["status"] == "success") {
-        data.addAll(response['data']);
-      } else {
-        requeststate = requeststatus.failaur;
-      }
-    }
+  getCurrentPosition() async {
+    position = await Geolocator.getCurrentPosition();
+    kGooglePlex = CameraPosition(
+      target: LatLng(position!.longitude, position!.latitude),
+      zoom: 14.4746,
+    );
+    requeststate = requeststatus.success;
+    print("**********************************8");
+    print(position!.longitude);
+    print(position!.latitude);
     update();
   }
 
   @override
   void onInit() {
-    getData2();
+    getCurrentPosition();
+    completercontroller = Completer<GoogleMapController>();
     super.onInit();
   }
 }
- */

@@ -36,4 +36,11 @@ class CartData {
     });
     return response.fold((l) => l, (r) => r);
   }
+
+  getCopoun(String name) async {
+    var response = await crud.postData(AppLinks.copoun, {
+      "name": name,
+    });
+    return response.fold((l) => l, (r) => r);
+  }
 }

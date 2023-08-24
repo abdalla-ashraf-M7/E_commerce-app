@@ -4,12 +4,15 @@ import 'package:e_commerce/core/constant/applinks.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../core/constant/colors.dart';
+
 class CustomCardCart extends StatelessWidget {
-  const CustomCardCart({super.key, required this.imagename, required this.itemname, required this.itemprice, required this.itemcount, this.ontapadd, this.ontapdelete});
+  const CustomCardCart({super.key, required this.imagename, required this.itemname, required this.itemprice, required this.itemcount, this.ontapadd, this.ontapdelete, required this.i});
   final String imagename;
   final String itemname;
   final String itemprice;
   final int itemcount;
+  final int i;
   final void Function()? ontapadd;
   final void Function()? ontapdelete;
   @override
@@ -51,13 +54,38 @@ class CustomCardCart extends StatelessWidget {
                               ),
                             ),
                             subtitle: Container(
+                              //color: Colors.black,
                               margin: const EdgeInsets.only(
                                 top: 10,
                               ),
-                              child: Text(
-                                itemprice,
-                                style: const TextStyle(fontSize: 20),
-                              ),
+                              child: controller.data[i].itemtotalpriceAfterdiscount == controller.data[i].itemtotalprice
+                                  ? Text(
+                                      itemprice,
+                                      style: const TextStyle(fontSize: 20),
+                                    )
+                                  : Row(
+                                      // mainAxisAlignment: MainAxisAlignment.end,
+                                      children: [
+                                        Container(
+                                          child: Text(
+                                            "${controller.data[i].itemtotalprice} \$",
+                                            textAlign: TextAlign.center,
+                                            style: const TextStyle(
+                                              decoration: TextDecoration.lineThrough,
+                                              decorationColor: Appcolors.primarycolor,
+                                              decorationThickness: 2,
+                                              fontSize: 20,
+                                            ),
+                                          ),
+                                        ),
+                                        const SizedBox(width: 10),
+                                        Text(
+                                          "${controller.data[i].itemtotalpriceAfterdiscount} \$",
+                                          textAlign: TextAlign.center,
+                                          style: const TextStyle(fontSize: 23, color: Appcolors.primarycolor),
+                                        )
+                                      ],
+                                    ),
                             ),
                           ),
                         ),

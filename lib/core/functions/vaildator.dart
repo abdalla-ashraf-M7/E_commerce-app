@@ -20,7 +20,7 @@ ValidInput(String val, int min, int max, String type) {
       return "57".tr;
     }
   }
-
+  if (type == "else") {}
   if (val.length < min) {
     return "${"58".tr}$min";
   }

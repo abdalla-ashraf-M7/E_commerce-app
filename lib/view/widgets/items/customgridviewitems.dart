@@ -13,6 +13,8 @@ class CustomGridViewItems extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     FavControllerImp controllerfav = Get.put(FavControllerImp());
+    ItemsControllerImp controller = Get.put(ItemsControllerImp());
+
     return GetBuilder<ItemsControllerImp>(
         builder: (controller) => GridView.builder(
               shrinkWrap: true,
@@ -41,6 +43,8 @@ class ItemsInItems extends GetView<ItemsControllerImp> {
 
   @override
   Widget build(BuildContext context) {
+    int itempriceIntForm = int.parse("${itemsModel.itemsPrice}");
+    int itemDiscountIntForm = int.parse("${itemsModel.itemsDiscount}");
     Get.put(FavControllerImp());
     return InkWell(
       onTap: () {
@@ -84,14 +88,35 @@ class ItemsInItems extends GetView<ItemsControllerImp> {
                     //  color: Colors.amber,
                     //padding: EdgeInsets.symmetric(horizontal: 20),
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 13),
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(
-                            "${itemsModel.itemsPrice} \$",
-                            style: const TextStyle(fontSize: 23, color: Appcolors.primarycolor, fontWeight: FontWeight.bold),
-                          ),
+                          itemsModel.itemsDiscount == '0'
+                              ? Text(
+                                  "${itemsModel.itemsPrice} \$",
+                                  style: const TextStyle(fontSize: 23, color: Appcolors.primarycolor, fontWeight: FontWeight.bold),
+                                )
+                              : Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    Text(
+                                      "${itempriceIntForm - (itempriceIntForm * itemDiscountIntForm / 100)} \$",
+                                      textAlign: TextAlign.center,
+                                      style: const TextStyle(fontSize: 23, color: Appcolors.primarycolor, fontWeight: FontWeight.bold),
+                                    ),
+                                    const SizedBox(width: 10),
+                                    Container(
+                                      // color: Colors.amber,
+                                      //alignment: AlignmentDirectional.bottomEnd,
+                                      child: Text(
+                                        "${itemsModel.itemsPrice} \$",
+                                        textAlign: TextAlign.center,
+                                        style: const TextStyle(decoration: TextDecoration.lineThrough, decorationThickness: 2, decorationColor: Appcolors.primarycolor, fontSize: 20),
+                                      ),
+                                    ),
+                                  ],
+                                ),
                           //******************************************************** */
                           GetBuilder<FavControllerImp>(
                             builder: (controller) => InkWell(

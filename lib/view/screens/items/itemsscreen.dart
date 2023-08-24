@@ -64,12 +64,12 @@ class ItemsScreen extends StatelessWidget {
                       )
                     : HandlinDataView(
                         requeststat: controller.requeststate,
-                        widget: Column(
+                        widget: const Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            const CustomListViewCatsInItems(),
-                            const SizedBox(height: 40),
-                            const CustomGridViewItems(),
+                            CustomListViewCatsInItems(),
+                            SizedBox(height: 40),
+                            CustomGridViewItems(),
                           ],
                         ))
               ],

@@ -11,8 +11,11 @@ class CustomRowAddAndDeleteAndPrice extends GetView<ItemsDetailsControllerImp> {
   });
   final void Function()? ontapadd;
   final void Function()? ontapdelete;
+
   @override
   Widget build(BuildContext context) {
+    int itempriceIntForm = int.parse("${controller.recieveditemsModel.itemsPrice}");
+    int itemDiscountIntForm = int.parse("${controller.recieveditemsModel.itemsDiscount}");
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -20,7 +23,7 @@ class CustomRowAddAndDeleteAndPrice extends GetView<ItemsDetailsControllerImp> {
           children: [
             InkWell(
               onTap: ontapdelete,
-              child: Icon(
+              child: const Icon(
                 Icons.remove,
                 color: Appcolors.red2,
                 size: 30,
@@ -34,7 +37,7 @@ class CustomRowAddAndDeleteAndPrice extends GetView<ItemsDetailsControllerImp> {
               width: 50,
               child: Text(
                 "${controller.cartcount}",
-                style: TextStyle(fontSize: 20, color: Appcolors.night2),
+                style: const TextStyle(fontSize: 20, color: Appcolors.night2),
               ),
             ),
             InkWell(
@@ -47,10 +50,30 @@ class CustomRowAddAndDeleteAndPrice extends GetView<ItemsDetailsControllerImp> {
             ),
           ],
         ),
-        Text(
-          "${controller.recieveditemsModel.itemsPrice} \$",
-          style: const TextStyle(fontSize: 30, color: Appcolors.red2, fontWeight: FontWeight.bold),
-        )
+        controller.recieveditemsModel.itemsDiscount == '0'
+            ? Text(
+                "${controller.recieveditemsModel.itemsPrice} \$",
+                style: const TextStyle(fontSize: 30, color: Appcolors.red2, fontWeight: FontWeight.bold),
+              )
+            : Row(
+                children: [
+                  Container(
+                    //color: Colors.amber,
+                    //alignment: AlignmentDirectional.bottomEnd,
+                    child: Text(
+                      "${controller.recieveditemsModel.itemsPrice} \$",
+                      textAlign: TextAlign.center,
+                      style: const TextStyle(decoration: TextDecoration.lineThrough, decorationThickness: 2, decorationColor: Appcolors.primarycolor, fontSize: 25),
+                    ),
+                  ),
+                  const SizedBox(width: 10),
+                  Text(
+                    "${itempriceIntForm - (itempriceIntForm * itemDiscountIntForm / 100)} \$",
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(fontSize: 30, color: Appcolors.primarycolor, fontWeight: FontWeight.bold),
+                  )
+                ],
+              )
       ],
     );
   }
