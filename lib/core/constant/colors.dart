@@ -21,6 +21,7 @@ class Appcolors {
   static const Color orange1 = Color(0xFFe67e22);
   static const Color orange2 = Color(0xFFd35400);
   static const Color pink1 = Color.fromARGB(255, 248, 163, 191);
+  static const Color pink2 = Color.fromARGB(255, 201, 44, 96);
   static const Color red1 = Color(0xFFe74c3c);
   static const Color red2 = Color(0xFFc0392b);
   static const Color red3 = Color.fromARGB(255, 148, 36, 24);
@@ -28,4 +29,5 @@ class Appcolors {
   static const Color grey2 = Color(0xFFbdc3c7);
   static const Color grey3 = Color(0xFF95a5a6);
   static const Color grey4 = Color(0xFF7f8c8d);
+  static const Color grey5 = Color.fromARGB(255, 80, 85, 85);
 }

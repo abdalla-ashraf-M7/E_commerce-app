@@ -1,7 +1,7 @@
 class CartViewModel {
   String? itemtotalprice;
   String? itemtotalpriceAfterdiscount;
-  String? itemcount;
+  String? itemcountInOrder;
   String? cartId;
   String? cartUsers;
   String? cartItems;
@@ -11,7 +11,7 @@ class CartViewModel {
   String? itemsDesc;
   String? itemsDescAr;
   String? itemsImage;
-  String? itemsCount;
+  String? itemsCountInDB;
   String? itemsActive;
   String? itemsPrice;
   String? itemsDiscount;
@@ -21,7 +21,7 @@ class CartViewModel {
   CartViewModel(
       {this.itemtotalprice,
       this.itemtotalpriceAfterdiscount,
-      this.itemcount,
+      this.itemcountInOrder,
       this.cartId,
       this.cartUsers,
       this.cartItems,
@@ -31,7 +31,7 @@ class CartViewModel {
       this.itemsDesc,
       this.itemsDescAr,
       this.itemsImage,
-      this.itemsCount,
+      this.itemsCountInDB,
       this.itemsActive,
       this.itemsPrice,
       this.itemsDiscount,
@@ -41,7 +41,7 @@ class CartViewModel {
   CartViewModel.fromJson(Map<String, dynamic> json) {
     itemtotalprice = json['itemprice'];
     itemtotalpriceAfterdiscount = json['itempriceafterdiscount'];
-    itemcount = json['itemcount'];
+    itemcountInOrder = json['itemcount'];
     cartId = json['cart_id'];
     cartUsers = json['cart_users'];
     cartItems = json['cart_items'];
@@ -51,7 +51,7 @@ class CartViewModel {
     itemsDesc = json['items_desc'];
     itemsDescAr = json['items_desc_ar'];
     itemsImage = json['items_image'];
-    itemsCount = json['items_count'];
+    itemsCountInDB = json['items_count'];
     itemsActive = json['items_active'];
     itemsPrice = json['items_price'];
     itemsDiscount = json['items_discount'];
@@ -63,7 +63,7 @@ class CartViewModel {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['itemprice'] = this.itemtotalprice;
     data['itempriceafterdiscount'] = this.itemtotalpriceAfterdiscount;
-    data['itemcount'] = this.itemcount;
+    data['itemcount'] = this.itemcountInOrder;
     data['cart_id'] = this.cartId;
     data['cart_users'] = this.cartUsers;
     data['cart_items'] = this.cartItems;
@@ -73,7 +73,7 @@ class CartViewModel {
     data['items_desc'] = this.itemsDesc;
     data['items_desc_ar'] = this.itemsDescAr;
     data['items_image'] = this.itemsImage;
-    data['items_count'] = this.itemsCount;
+    data['items_count'] = this.itemsCountInDB;
     data['items_active'] = this.itemsActive;
     data['items_price'] = this.itemsPrice;
     data['items_discount'] = this.itemsDiscount;

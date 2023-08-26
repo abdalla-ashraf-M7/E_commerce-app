@@ -16,9 +16,13 @@ import 'package:e_commerce/view/screens/favorite/myfavscreen.dart';
 import 'package:e_commerce/view/screens/homescreen.dart';
 import 'package:e_commerce/view/screens/items/itemsdetails.dart';
 import 'package:e_commerce/view/screens/items/itemsscreen.dart';
+import 'package:e_commerce/view/screens/notifications/notifiyscreen.dart';
 import 'package:e_commerce/view/screens/onboarding/languagescreen.dart';
 import 'package:e_commerce/view/screens/onboarding/onboardingscreen.dart';
-import 'package:e_commerce/view/screens/orders/orderscreen.dart';
+import 'package:e_commerce/view/screens/orders/archive.dart';
+import 'package:e_commerce/view/screens/orders/myorders.dart';
+import 'package:e_commerce/view/screens/orders/orderdetails.dart';
+import 'package:e_commerce/view/screens/orders/paymentmethodscreen.dart';
 import 'package:get/get.dart';
 
 List<GetPage<dynamic>> routes = [
@@ -43,5 +47,10 @@ List<GetPage<dynamic>> routes = [
   GetPage(name: Approutes.address, page: () => const AddressViewScreen()),
   GetPage(name: Approutes.addNewAddress, page: () => const AddNewAddress()),
   GetPage(name: Approutes.addressDetails, page: () => const AddressDetailsScreen()),
-  GetPage(name: Approutes.order, page: () => const OrderScreen()),
+  GetPage(name: Approutes.checkout, page: () => const PaymentMethodScreen()),
+  GetPage(name: Approutes.myorders, page: () => MyOrdersScreen()),
+  GetPage(name: Approutes.notifications, page: () => NotificationScreen()),
+  GetPage(name: Approutes.orderdetails, page: () => OrderDetailsScreen()),
+  GetPage(name: Approutes.archive, page: () => ArchiveScreen()),
+  //GetPage(name: "/", page: () => const PaymentMethodScreen()),
 ];

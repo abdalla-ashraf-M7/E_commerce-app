@@ -43,4 +43,14 @@ class AppLinks {
   static const addressEdit = "$server/address/edit.php";
   static const addressDelete = "$server/address/delete.php";
   static const addressView = "$server/address/view.php";
+
+  //order
+  static const checkout = "$server/orders/checkout.php";
+  static const myOrders = "$server/orders/myorders.php";
+  static const orderdetails = "$server/orders/orderdetails.php";
+  static const orderDelete = "$server/orders/delete.php";
+  static const orderArchive = "$server/orders/archive.php";
+
+  //ntifications
+  static const notifications = "$server/orders/notifications.php";
 }

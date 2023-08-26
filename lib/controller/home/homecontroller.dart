@@ -13,6 +13,7 @@ abstract class HomeController extends MixSearchController {
   viewData();
   catclick(int catnumber, String catname);
   gotofavorite();
+  gotonotifications();
 }
 
 MyServices myServices = Get.find();
@@ -72,6 +73,11 @@ class HomeControllerImp extends HomeController {
   @override
   gotofavorite() {
     Get.toNamed(Approutes.favorite);
+  }
+
+  @override
+  gotonotifications() {
+    Get.toNamed(Approutes.notifications);
   }
 }
 

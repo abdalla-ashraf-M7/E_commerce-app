@@ -167,7 +167,7 @@ class CustomBottomNavigationCart extends StatelessWidget {
                       "Shipping",
                       style: TextStyle(fontSize: 20),
                     ),
-                    Text("$shipping %", style: const TextStyle(fontSize: 20))
+                    Text("$shipping", style: const TextStyle(fontSize: 20))
                   ],
                 ),
               ),
@@ -182,8 +182,8 @@ class CustomBottomNavigationCart extends StatelessWidget {
                   children: [
                     const Text("Total Price", style: TextStyle(fontSize: 25)),
                     Text(
-                      "${priceafterdiscountAndcopoun + (priceafterdiscountAndcopoun * shipping / 100)} \$",
-                      style: const TextStyle(fontSize: 30, color: Appcolors.primarycolor, fontWeight: FontWeight.bold),
+                      "${(priceafterdiscountAndcopoun + shipping).toStringAsFixed(4)} \$",
+                      style: const TextStyle(fontSize: 30, color: Appcolors.primarycolor, fontWeight: FontWeight.bold), //tostring this make the dicimals be just 4 not more
                     ),
                   ],
                 ),

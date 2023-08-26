@@ -8,6 +8,8 @@ class Appimageassets {
   static const String onboardingimagethree = "$onboardingimagesroot/others/splash_3.png";
   static const String dots = "$onboardingimagesroot/others/Pattern Success.png";
   static const String avatar = "$onboardingimagesroot/avatar.png";
+  static const String delivery = "$onboardingimagesroot/delivery.png";
+  static const String deliverythru = "$onboardingimagesroot/drivethru.png";
   //lottie
 
   static const String loading = "assets/lottie/loading.json";

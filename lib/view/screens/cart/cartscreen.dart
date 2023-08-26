@@ -14,7 +14,7 @@ class CartScreen extends StatelessWidget {
     Get.put(CartControllerImp());
     return Scaffold(
         appBar: AppBar(
-            title: Text(
+            title: const Text(
           "My Cart",
         )),
         bottomNavigationBar: GetBuilder<CartControllerImp>(
@@ -57,7 +57,7 @@ class CartScreen extends StatelessWidget {
                       imagename: "${controller.data[index].itemsImage}",
                       itemname: "${controller.data[index].itemsName}",
                       itemprice: "${controller.data[index].itemtotalprice}",
-                      itemcount: int.parse("${controller.data[index].itemcount}"));
+                      itemcount: int.parse("${controller.data[index].itemcountInOrder}"));
                 },
               ),
             ],

@@ -26,10 +26,18 @@ class Approutes {
 
   //cart
   static const String cart = "/cart";
-  static const String order = "/order";
 
   //address
   static const String address = "/address";
   static const String addNewAddress = "/addNewAddress";
   static const String addressDetails = "/addressDetails";
+
+  //orders
+  static const String checkout = "/checkout";
+  static const String myorders = "/myorders";
+  static const String orderdetails = "/orderdetails";
+  static const String archive = "/archive";
+
+  //notificaions
+  static const String notifications = "/notifications";
 }

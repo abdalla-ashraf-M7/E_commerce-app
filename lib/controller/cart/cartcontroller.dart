@@ -1,5 +1,6 @@
 import 'package:e_commerce/core/class/requeststatus.dart';
 import 'package:e_commerce/core/constant/approutes.dart';
+import 'package:e_commerce/core/constant/colors.dart';
 import 'package:e_commerce/core/functions/handlingdata.dart';
 import 'package:e_commerce/core/services/services.dart';
 import 'package:e_commerce/data/datasource/remote/cart/cartdata.dart';
@@ -35,6 +36,21 @@ class CartControllerImp extends CartController {
   TextEditingController? copouncontroller;
   bool isCopounValid = false;
   GlobalKey<FormState>? copounkey;
+  String? copounId;
+
+  @override
+  initialData() {
+    cartVeiw();
+    copounModel = CopounModel();
+    copouncontroller = TextEditingController();
+    copounkey = GlobalKey<FormState>();
+  }
+
+  @override
+  void onInit() {
+    initialData();
+    super.onInit();
+  }
 
   @override
   cartVeiw() async {
@@ -60,20 +76,6 @@ class CartControllerImp extends CartController {
       requeststate = requeststatus.serverFailaur;
     }
     update();
-  }
-
-  @override
-  initialData() {
-    cartVeiw();
-    copounModel = CopounModel();
-    copouncontroller = TextEditingController();
-    copounkey = GlobalKey<FormState>();
-  }
-
-  @override
-  void onInit() {
-    initialData();
-    super.onInit();
   }
 
   @override
@@ -144,6 +146,7 @@ class CartControllerImp extends CartController {
           copounModel = CopounModel.fromJson(responedata);
           isCopounValid = true;
           copoundiscount = double.parse("${copounModel!.copounDiscount}");
+          copounId = "${copounModel!.copounId}";
         } else {
           Get.rawSnackbar(title: "Sorry", message: "this Copoun is't Valid");
         }
@@ -173,7 +176,15 @@ class CartControllerImp extends CartController {
 
   @override
   gotoOrder() {
-    Get.toNamed(Approutes.order);
+    if (!data.isEmpty) {
+      Get.toNamed(Approutes.checkout, arguments: {
+        "copounid": copounId ?? '0',
+        "priceafterdiscount": databaseCartTatalpriceAfterDiscount.toString(),
+        "copoundiscount": copoundiscount.toString(),
+      });
+    } else {
+      Get.snackbar("Warning", "The Cart is Empty please add some products", backgroundColor: Appcolors.primarycolor, colorText: Appcolors.white);
+    }
   }
 //i made them trying to remove the loading in cart screen when add adn remove lidke itemsdetails
 /*   @override

@@ -45,7 +45,9 @@ class HomePage extends StatelessWidget {
               const SizedBox(width: 10),
               CustomIconHome(
                 icon: Icons.notifications_active_outlined,
-                onpressicon: () {},
+                onpressicon: () {
+                  controller.gotonotifications();
+                },
               ),
             ]),
             const SizedBox(height: 20),

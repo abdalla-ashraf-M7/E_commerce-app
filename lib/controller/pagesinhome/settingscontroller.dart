@@ -1,12 +1,15 @@
 import 'package:e_commerce/core/constant/approutes.dart';
 import 'package:e_commerce/core/services/services.dart';
 import 'package:e_commerce/view/widgets/defaultdialog.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 abstract class SettingsController extends GetxController {
   logout();
   goToAddress();
+  goToOrders();
+  goToArchive();
 }
 
 class SettingsControllerImp extends SettingsController {
@@ -15,6 +18,14 @@ class SettingsControllerImp extends SettingsController {
     {
       "title": "Disable Noifications",
       "trailling": Switch(value: true, onChanged: (val) {}),
+    },
+    {
+      "title": "Orders",
+      "trailling": const Icon(Icons.earbuds_battery_outlined),
+    },
+    {
+      "title": "Archeve",
+      "trailling": const Icon(Icons.archive),
     },
     {
       "title": "Adress",
@@ -43,6 +54,9 @@ class SettingsControllerImp extends SettingsController {
       Get.back();
     }, () {
       myServices.sharedPrefs!.setString('step', '1');
+      String id = "${myServices.sharedPrefs!.getString("id")}";
+      FirebaseMessaging.instance.unsubscribeFromTopic("users");
+      FirebaseMessaging.instance.unsubscribeFromTopic("users$id");
       Get.offAllNamed(Approutes.login);
     });
   }
@@ -50,5 +64,15 @@ class SettingsControllerImp extends SettingsController {
   @override
   goToAddress() {
     Get.toNamed(Approutes.address);
+  }
+
+  @override
+  goToOrders() {
+    Get.toNamed(Approutes.myorders);
+  }
+
+  @override
+  goToArchive() {
+    Get.toNamed(Approutes.archive);
   }
 }

@@ -55,7 +55,16 @@ class LogInControllerImp extends LogInController {
       if (reqeuststate == requeststatus.success) {
         if (response["status"] == "success") {
           try {
-            saveUserData(response['data']['users_id'], response['data']['users_name'], response['data']['users_email'], response['data']['users_password'], response['data']['users_phone']);
+            saveUserData(
+              response['data']['users_id'],
+              response['data']['users_name'],
+              response['data']['users_email'],
+              response['data']['users_password'],
+              response['data']['users_phone'],
+            );
+            String id = "${myServices.sharedPrefs!.getString("id")}";
+            FirebaseMessaging.instance.subscribeToTopic("users");
+            FirebaseMessaging.instance.subscribeToTopic("users$id");
             Get.offAllNamed(Approutes.homescreen);
           } catch (e) {
             print("(???????????????????????????????$e)");

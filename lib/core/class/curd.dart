@@ -9,6 +9,9 @@ class Crud {
     try {
       if (await checkINternet()) {
         var response = await http.post(Uri.parse(url), body: data);
+        /* print("%%%%%%%%%%%%%%%%%%%%%%%");
+        print(response.body);
+        print("%%%%%%%%%%%%%%%%%%%%%%%"); */
         if (response.statusCode == 200 || response.statusCode == 201) {
           var responsebody = jsonDecode(response.body);
           return Right(responsebody);
@@ -19,7 +22,9 @@ class Crud {
       } else {
         return left(requeststatus.offlineFailaur);
       }
-    } catch (_) {
+    } catch (e) {
+      print("%%%%%%%%%%%%%%%%%%%%%%%");
+      print(e);
       return left(requeststatus.unknown);
     }
   }

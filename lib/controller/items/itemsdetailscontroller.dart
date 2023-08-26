@@ -28,6 +28,8 @@ class ItemsDetailsControllerImp extends ItemsDetailsController {
     requeststate = requeststatus.loading;
     recieveditemsModel = Get.arguments['itemmodel'];
     cartcount = await getCartCount("${recieveditemsModel.itemsId}");
+    // await getCartCount("${recieveditemsModel.itemsId}");
+
     requeststate = requeststatus.success;
     update();
   }
@@ -46,12 +48,15 @@ class ItemsDetailsControllerImp extends ItemsDetailsController {
   @override
   getCartCount(itemid) async {
     requeststate = requeststatus.loading;
+    update();
     var response = await cartData.getcartcount("${myServices.sharedPrefs!.getString('id')}", itemid);
     print("77777777777getcountinitemdetatils7777777777777$response");
     requeststate = handlingData(response);
     if (requeststate == requeststatus.success) {
       if (response['status'] == 'success') {
         int cartcount = int.parse(response['count']);
+        print("**************************************");
+        print(cartcount);
         return cartcount;
       } else {
         requeststate = requeststatus.failaur;
