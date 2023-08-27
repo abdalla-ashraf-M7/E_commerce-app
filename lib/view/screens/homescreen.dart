@@ -1,5 +1,6 @@
 import 'package:e_commerce/controller/home/homescreencontroller.dart';
 import 'package:e_commerce/core/constant/colors.dart';
+import 'package:e_commerce/core/functions/exitalert.dart';
 import 'package:e_commerce/view/widgets/homewidgets/custombottombar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -20,7 +21,11 @@ class HomeScreen extends StatelessWidget {
                 },
               ),
               bottomNavigationBar: const CustomBottomBarHome(),
-              body: controller.pagesinhome[controller.currentpage],
+              body: WillPopScope(
+                  child: controller.pagesinhome[controller.currentpage],
+                  onWillPop: () {
+                    return exitAlert();
+                  }),
             ));
   }
 }

@@ -71,13 +71,13 @@ class HomePage extends StatelessWidget {
                     widget: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const CustomOfferBoard(text1: "Winter Offer", text2: "Cashback 20%"),
+                        CustomOfferBoard(text1: controller.titlehome, text2: controller.bodyhome),
                         const SizedBox(height: 15),
                         Text("Categories", style: Theme.of(context).textTheme.displayLarge),
                         const SizedBox(height: 10),
                         const CustomListViewCats(),
                         const SizedBox(height: 15),
-                        Text("Discount For You ", style: Theme.of(context).textTheme.displayLarge),
+                        Text("Top Sales", style: Theme.of(context).textTheme.displayLarge),
                         const SizedBox(height: 5),
                         const CustomListViewItems(),
                       ],

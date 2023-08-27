@@ -1,4 +1,3 @@
-import 'package:e_commerce/core/constant/approutes.dart';
 import 'package:e_commerce/data/model/ordersmodel.dart';
 import 'package:get/get.dart';
 import '../../core/class/requeststatus.dart';
@@ -9,7 +8,7 @@ import '../../data/datasource/remote/orders/ordersdata.dart';
 abstract class ArchiveOrderController extends GetxController {
   geArchivedtOrders();
   initalData();
-
+  rateOrder(String orderid, String rating, String comment);
   refreshMyOrderspage();
 }
 
@@ -44,6 +43,27 @@ class ArchiveOrderControllerImp extends ArchiveOrderController {
       if (response['status'] == 'success') {
         List responsedata = response['data'];
         data.addAll(responsedata.map((e) => OrdersModel.fromJson(e)));
+      } else {
+        requeststate = requeststatus.failaur;
+      }
+    } else {
+      requeststate = requeststatus.serverFailaur;
+    }
+    update();
+  }
+
+  @override
+  rateOrder(orderid, rating, comment) async {
+    requeststate = requeststatus.loading;
+    update();
+    //data.clear();
+    var response = await orderData.orderRating(orderid, rating, comment);
+    print("8888888888888rateOrders888888888$response");
+    requeststate = handlingData(response);
+    if (requeststate == requeststatus.success) {
+      if (response['status'] == 'success') {
+        geArchivedtOrders();
+        Get.rawSnackbar(title: "Success", message: "Thank you for rating");
       } else {
         requeststate = requeststatus.failaur;
       }

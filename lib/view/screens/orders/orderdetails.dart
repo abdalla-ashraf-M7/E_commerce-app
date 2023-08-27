@@ -1,6 +1,7 @@
 import 'package:e_commerce/controller/order/orderdetailscontroller.dart';
 import 'package:e_commerce/core/class/handlingdatview.dart';
 import 'package:e_commerce/core/constant/colors.dart';
+import 'package:e_commerce/view/widgets/address/customyoudeletetheaddres.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -76,6 +77,7 @@ class OrderDetailsScreen extends StatelessWidget {
                             textAlign: TextAlign.center,
                           ),
                         ),
+                        if (pagecontroller.rOrderModel.ordersType == "1" && pagecontroller.rOrderModel.addressName == null) const CustomYouDeleteThisAddress(),
                         if (pagecontroller.initPosition != null && pagecontroller.rOrderModel.ordersType == "1")
                           Column(
                             children: [

@@ -20,6 +20,7 @@ class ItemsControllerImp extends ItemsController {
   List cats = [];
   List items = [];
   MyServices myServices = Get.find();
+  String dileverytime = "";
 
   @override
   void onInit() {
@@ -31,6 +32,7 @@ class ItemsControllerImp extends ItemsController {
   initialdata() async {
     catnumber = Get.arguments['catnumber'];
     cats.addAll(Get.arguments['catlist']);
+    dileverytime = myServices.sharedPrefs!.getString("dileverytime")!;
     getItems();
   }
 

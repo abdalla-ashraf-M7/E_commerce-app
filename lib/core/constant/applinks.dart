@@ -50,7 +50,11 @@ class AppLinks {
   static const orderdetails = "$server/orders/orderdetails.php";
   static const orderDelete = "$server/orders/delete.php";
   static const orderArchive = "$server/orders/archive.php";
+  static const orderRating = "$server/orders/rating.php";
 
   //ntifications
   static const notifications = "$server/orders/notifications.php";
+
+  //offer
+  static const offer = "$server/offer.php";
 }

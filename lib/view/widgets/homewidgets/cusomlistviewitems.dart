@@ -30,39 +30,44 @@ class CustomListViewItems extends GetView<HomeControllerImp> {
   }
 }
 
-class ItemsDiscountInPage extends StatelessWidget {
+class ItemsDiscountInPage extends GetView<HomeControllerImp> {
   const ItemsDiscountInPage({super.key, required this.itemsDiscountModel});
   final ItemsModel itemsDiscountModel;
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      alignment: Alignment.center,
-      children: [
-        SizedBox(
-          height: 140,
-          width: 200,
-          child: CachedNetworkImage(
-            imageUrl: "${AppLinks.itmesimages}/${itemsDiscountModel.itemsImage}",
-            fit: BoxFit.fill,
+    return InkWell(
+      onTap: () {
+        controller.gotoitemsdetails(itemsDiscountModel);
+      },
+      child: Stack(
+        alignment: Alignment.center,
+        children: [
+          SizedBox(
+            height: 140,
+            width: 200,
+            child: CachedNetworkImage(
+              imageUrl: "${AppLinks.itmesimages}/${itemsDiscountModel.itemsImage}",
+              fit: BoxFit.fill,
+            ),
           ),
-        ),
-        Container(
-          height: 160,
-          width: 250,
-          alignment: Alignment.center,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(15),
-            color: Colors.black.withOpacity(.3),
+          Container(
+            height: 160,
+            width: 250,
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(15),
+              color: Colors.black.withOpacity(.3),
+            ),
           ),
-        ),
-        Positioned(
-            left: 10,
-            top: 10,
-            child: Text(
-              "${itemsDiscountModel.itemsName}",
-              style: const TextStyle(color: Appcolors.white, fontSize: 25, fontWeight: FontWeight.bold),
-            ))
-      ],
+          Positioned(
+              left: 10,
+              top: 10,
+              child: Text(
+                "${itemsDiscountModel.itemsName}",
+                style: const TextStyle(color: Appcolors.white, fontSize: 25, fontWeight: FontWeight.bold),
+              ))
+        ],
+      ),
     );
   }
 }

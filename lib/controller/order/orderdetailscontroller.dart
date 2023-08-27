@@ -28,7 +28,7 @@ class OrderDetailsControllerImp extends OrderDetailsController {
   @override
   initialData() async {
     rOrderModel = Get.arguments['ordermodel'];
-    if (rOrderModel.ordersType == "1") {
+    if (rOrderModel.ordersType == "1" && rOrderModel.addressName != null) {
       await initialposition();
       addmarker(LatLng(double.parse("${rOrderModel.addressLat}"), double.parse("${rOrderModel.addressLong}")));
       completercontroller = Completer<GoogleMapController>();

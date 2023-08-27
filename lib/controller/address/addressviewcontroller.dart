@@ -38,7 +38,7 @@ class AddressViewControllerImp extends AddressViewController {
         List responsedata = response['data'];
         data.addAll(responsedata.map((e) => AdreesViewModel.fromJson(e)));
       } else {
-        requeststate = requeststatus.failaur;
+        Get.snackbar("opps", "You didn't set any address");
       }
     } else {
       requeststate = requeststatus.serverFailaur;

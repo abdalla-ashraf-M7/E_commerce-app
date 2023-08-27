@@ -8,6 +8,8 @@ class OrdersModel {
   String? ordersDileveryprice;
   String? ordersTotalprice;
   String? ordersCopoun;
+  String? ordersRating;
+  String? ordersComment;
   String? ordersStatus;
   String? ordersDate;
   String? addressId;
@@ -28,6 +30,8 @@ class OrdersModel {
       this.ordersDileveryprice,
       this.ordersTotalprice,
       this.ordersCopoun,
+      this.ordersRating,
+      this.ordersComment,
       this.ordersStatus,
       this.ordersDate,
       this.addressId,
@@ -48,6 +52,8 @@ class OrdersModel {
     ordersDileveryprice = json['orders_dileveryprice'];
     ordersTotalprice = json['orders_totalprice'];
     ordersCopoun = json['orders_copoun'];
+    ordersRating = json['orders_rating'];
+    ordersComment = json['orders_comment'];
     ordersStatus = json['orders_status'];
     ordersDate = json['orders_date'];
     addressId = json['address_id'];
@@ -70,6 +76,8 @@ class OrdersModel {
     data['orders_dileveryprice'] = this.ordersDileveryprice;
     data['orders_totalprice'] = this.ordersTotalprice;
     data['orders_copoun'] = this.ordersCopoun;
+    data['orders_rating'] = this.ordersRating;
+    data['orders_comment'] = this.ordersComment;
     data['orders_status'] = this.ordersStatus;
     data['orders_date'] = this.ordersDate;
     data['address_id'] = this.addressId;

@@ -4,12 +4,14 @@ import 'package:e_commerce/view/widgets/defaultdialog.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 abstract class SettingsController extends GetxController {
   logout();
   goToAddress();
   goToOrders();
   goToArchive();
+  contactUs();
 }
 
 class SettingsControllerImp extends SettingsController {
@@ -74,5 +76,10 @@ class SettingsControllerImp extends SettingsController {
   @override
   goToArchive() {
     Get.toNamed(Approutes.archive);
+  }
+
+  @override
+  contactUs() {
+    launchUrl(Uri.parse("mailto:Keeplearning913@gmail.com?subject=News&body=New%20plugin"));
   }
 }

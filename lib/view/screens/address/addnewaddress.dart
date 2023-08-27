@@ -39,7 +39,9 @@ class AddNewAddress extends StatelessWidget {
                                   mapType: MapType.normal,
                                   initialCameraPosition: pageController.kGooglePlex!,
                                   onMapCreated: (GoogleMapController controller) {
-                                    pageController.completercontroller!.complete(controller);
+                                    if (!pageController.completercontroller!.isCompleted) {
+                                      pageController.completercontroller!.complete(controller);
+                                    }
                                   },
                                 ),
                               ),

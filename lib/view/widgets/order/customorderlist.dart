@@ -1,3 +1,4 @@
+import 'package:e_commerce/core/functions/orderrating.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:jiffy/jiffy.dart';
@@ -65,22 +66,56 @@ class CustomCardOrders extends StatelessWidget {
                   "Total Price: ${ordersModel.ordersTotalprice} \$",
                   style: const TextStyle(fontSize: 23),
                 ),
-                if (ordersModel.ordersStatus == "0")
-                  IconButton(
-                      onPressed: () async {
-                        await controller.deleteOrder(ordersModel.ordersId!);
-                      },
-                      icon: Icon(Icons.delete)),
-                MaterialButton(
-                    height: 38,
-                    color: Appcolors.primarycolor,
-                    onPressed: () {
-                      controller.gotoDetails(i);
-                    },
-                    child: const Text(
-                      "Detatils",
-                      style: TextStyle(fontSize: 23, color: Appcolors.white),
-                    ))
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    if (ordersModel.ordersStatus == "0")
+                      IconButton(
+                          onPressed: () async {
+                            await controller.deleteOrder(ordersModel.ordersId!);
+                          },
+                          icon: const Icon(Icons.delete)),
+                    if (ordersModel.ordersStatus == "4")
+                      ordersModel.ordersRating == "0"
+                          ? InkWell(
+                              onTap: () {
+                                showRating(context, ordersModel.ordersId!);
+                              },
+                              child: const Icon(
+                                Icons.star,
+                                size: 50,
+                                color: Appcolors.yellow2,
+                              ),
+                            )
+                          : Stack(
+                              alignment: AlignmentDirectional.center,
+                              children: [
+                                const Icon(
+                                  Icons.star,
+                                  size: 50,
+                                  color: Appcolors.grey2,
+                                ),
+                                Text(
+                                  "${ordersModel.ordersRating}",
+                                  style: const TextStyle(color: Appcolors.primarycolor, fontWeight: FontWeight.bold, fontSize: 20),
+                                )
+                              ],
+                            ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    MaterialButton(
+                        height: 38,
+                        color: Appcolors.primarycolor,
+                        onPressed: () {
+                          controller.gotoDetails(i);
+                        },
+                        child: const Text(
+                          "Detatils",
+                          style: TextStyle(fontSize: 23, color: Appcolors.white),
+                        ))
+                  ],
+                )
               ],
             )
           ]),

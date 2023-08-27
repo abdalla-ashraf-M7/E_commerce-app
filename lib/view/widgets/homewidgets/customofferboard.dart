@@ -15,15 +15,15 @@ class CustomOfferBoard extends StatelessWidget {
           decoration: BoxDecoration(borderRadius: BorderRadius.circular(15), color: Appcolors.primarycolor),
           child: ListTile(
             title: Padding(
-              padding: EdgeInsets.only(bottom: 15),
+              padding: const EdgeInsets.only(bottom: 15),
               child: Text(
                 text1,
-                style: const TextStyle(color: Appcolors.night2, fontSize: 25),
+                style: const TextStyle(color: Appcolors.white, fontSize: 25),
               ),
             ),
             subtitle: Text(
               text2,
-              style: const TextStyle(color: Appcolors.night2, fontSize: 33, fontWeight: FontWeight.bold),
+              style: const TextStyle(color: Appcolors.white, fontSize: 33, fontWeight: FontWeight.bold),
             ),
           ),
         ),

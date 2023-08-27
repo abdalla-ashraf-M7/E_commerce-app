@@ -24,6 +24,11 @@ class HomeControllerImp extends HomeController {
   String? username;
   List cats = [];
   List items = [];
+  Map texthome = {};
+  String titlehome = "";
+  String bodyhome = "";
+  String dileverytime = "";
+  MyServices myServices = Get.find();
 
   @override
   viewData() async {
@@ -36,6 +41,11 @@ class HomeControllerImp extends HomeController {
       if (response["status"] == "success") {
         cats.addAll(response['cats']);
         items.addAll(response['items']);
+        texthome = response['text'];
+        titlehome = texthome['text_titlehome'];
+        bodyhome = texthome['text_bodyhome'];
+        dileverytime = texthome['text_dileverytime'];
+        myServices.sharedPrefs!.setString("dileverytime", dileverytime);
       } else {
         requeststate = requeststatus.failaur;
         defultDialog("Warning!!", "Email or Phone is already used", "Cancle", "Try Again", 60, 10, () {
@@ -46,6 +56,11 @@ class HomeControllerImp extends HomeController {
       }
     } else {}
     update();
+  }
+
+  @override
+  gotoitemsdetails(theModel) {
+    Get.toNamed(Approutes.itemsdetails, arguments: {"itemmodel": theModel});
   }
 
   @override

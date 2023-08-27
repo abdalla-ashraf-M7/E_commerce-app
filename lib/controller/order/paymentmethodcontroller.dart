@@ -15,6 +15,7 @@ abstract class PaymentMethodController extends GetxController {
   dileveryMehod(String val);
   whichAddress(String val);
   checkOut();
+  gotoAddNewAddress();
 }
 
 class PaymentMethodControllerImp extends PaymentMethodController {
@@ -46,6 +47,11 @@ class PaymentMethodControllerImp extends PaymentMethodController {
   }
 
   @override
+  gotoAddNewAddress() {
+    Get.toNamed(Approutes.addNewAddress);
+  }
+
+  @override
   viewAdresses() async {
     requeststate = requeststatus.loading;
     update();
@@ -59,7 +65,7 @@ class PaymentMethodControllerImp extends PaymentMethodController {
         List responsedata = response['data'];
         data.addAll(responsedata.map((e) => AdreesViewModel.fromJson(e)));
       } else {
-        requeststate = requeststatus.failaur;
+        Get.snackbar("Warning", "You didn't set any address");
       }
     } else {
       requeststate = requeststatus.serverFailaur;

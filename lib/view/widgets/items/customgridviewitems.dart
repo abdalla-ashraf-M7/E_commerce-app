@@ -13,7 +13,7 @@ class CustomGridViewItems extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     FavControllerImp controllerfav = Get.put(FavControllerImp());
-    ItemsControllerImp controller = Get.put(ItemsControllerImp());
+    Get.put(ItemsControllerImp());
 
     return GetBuilder<ItemsControllerImp>(
         builder: (controller) => GridView.builder(
@@ -78,10 +78,17 @@ class ItemsInItems extends GetView<ItemsControllerImp> {
                     "${itemsModel.itemsName}",
                     style: const TextStyle(fontSize: 23, color: Appcolors.primarycolor, fontWeight: FontWeight.bold),
                   ),
-                  Text(
-                    "${itemsModel.itemsDesc}",
-                    textAlign: TextAlign.center,
-                    style: const TextStyle(color: Appcolors.night2, fontSize: 16),
+                  SizedBox(height: 10),
+                  Row(
+                    children: [
+                      Icon(Icons.timer_outlined),
+                      SizedBox(width: 5),
+                      Text(
+                        "${controller.dileverytime} minutes",
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(color: Appcolors.grey4, fontSize: 20, fontWeight: FontWeight.bold),
+                      ),
+                    ],
                   ),
                   const Spacer(),
                   Container(
