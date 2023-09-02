@@ -21,9 +21,14 @@ class FavControllerImp extends FavController {
   MyServices myServices = Get.find();
   List<MyFavModel> myfavs = [];
   Map isfav = {};
+  String dileverytime = "";
 
   @override
-  initialdata() {}
+  initialdata() {
+    if (myServices.sharedPrefs!.getString("dileverytime") != null) {
+      dileverytime = myServices.sharedPrefs!.getString("dileverytime")!;
+    }
+  }
 
   @override
   void onInit() {

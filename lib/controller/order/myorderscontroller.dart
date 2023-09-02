@@ -14,6 +14,7 @@ abstract class MyOrdersController extends GetxController {
   String rOrderStatus(String val);
   refreshMyOrderspage();
   gotoDetails(int i);
+  goToTrakingOrders(OrdersModel ordersModel);
   deleteOrder(String orderid);
 }
 
@@ -51,9 +52,7 @@ class MyOrdersControllerImp extends MyOrdersController {
       } else {
         requeststate = requeststatus.failaur;
       }
-    } else {
-      requeststate = requeststatus.serverFailaur;
-    }
+    } else {}
     update();
   }
 
@@ -73,9 +72,7 @@ class MyOrdersControllerImp extends MyOrdersController {
       } else {
         Get.rawSnackbar(title: "Sorry", message: "the Order is not deleted");
       }
-    } else {
-      requeststate = requeststatus.serverFailaur;
-    }
+    } else {}
     update();
   }
 
@@ -120,5 +117,10 @@ class MyOrdersControllerImp extends MyOrdersController {
   @override
   gotoDetails(i) {
     Get.toNamed(Approutes.orderdetails, arguments: {"ordermodel": data[i]});
+  }
+
+  @override
+  goToTrakingOrders(ordersModel) {
+    Get.toNamed(Approutes.trackOrder, arguments: {"ordermodel": ordersModel});
   }
 }

@@ -9,14 +9,14 @@ class Crud {
     try {
       if (await checkINternet()) {
         var response = await http.post(Uri.parse(url), body: data);
-        /* print("%%%%%%%%%%%%%%%%%%%%%%%");
+        print("%%%%%%%%%%%%%%%%%%%%%%%");
         print(response.body);
-        print("%%%%%%%%%%%%%%%%%%%%%%%"); */
+        print("%%%%%%%%%%%%%%%%%%%%%%%");
         if (response.statusCode == 200 || response.statusCode == 201) {
           var responsebody = jsonDecode(response.body);
           return Right(responsebody);
         } else {
-          print("11111111111111111111111111${response.statusCode}");
+          print("11111111111incrud111111111111111${response.statusCode}");
           return left(requeststatus.serverFailaur);
         }
       } else {

@@ -1,6 +1,7 @@
 import 'package:e_commerce/core/class/requeststatus.dart';
 import 'package:e_commerce/core/constant/imageassets.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 
 class HandlinDataView extends StatelessWidget {
@@ -10,13 +11,25 @@ class HandlinDataView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return requeststat == requeststatus.loading
-        ? Center(child: Lottie.asset(Appimageassets.loading, width: 300))
+        ? ListView(
+            shrinkWrap: true,
+            children: [Container(height: Get.height - 140, child: Center(child: Lottie.asset(Appimageassets.loading, width: 300)))],
+          )
         : requeststat == requeststatus.offlineFailaur
-            ? Center(child: Lottie.asset(Appimageassets.offline, width: 600))
+            ? ListView(
+                shrinkWrap: true,
+                children: [Container(height: Get.height - 140, child: Center(child: Lottie.asset(Appimageassets.offline, width: 600)))],
+              )
             : requeststat == requeststatus.serverFailaur
-                ? Center(child: Lottie.asset(Appimageassets.server, width: 300))
+                ? ListView(
+                    shrinkWrap: true,
+                    children: [Container(height: Get.height - 140, child: Center(child: Lottie.asset(Appimageassets.server, width: 300)))],
+                  )
                 : requeststat == requeststatus.failaur
-                    ? Center(child: Lottie.asset(Appimageassets.nodata, width: 300))
+                    ? ListView(
+                        shrinkWrap: true,
+                        children: [Container(height: Get.height - 140, child: Center(child: Lottie.asset(Appimageassets.nodata, width: 300)))],
+                      )
                     : requeststat == requeststatus.unknown
                         ? const Center(child: Center(child: Text("unknown error")))
                         : widget;

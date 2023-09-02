@@ -67,7 +67,7 @@ class MyfavScreen extends StatelessWidget {
                       widget: GridView.builder(
                         shrinkWrap: true,
                         physics: const NeverScrollableScrollPhysics(),
-                        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2, childAspectRatio: .7),
+                        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2, childAspectRatio: .65),
                         itemCount: controller.myfavs.length,
                         itemBuilder: (BuildContext context, int index) {
                           return HandlinDataView(
@@ -102,10 +102,18 @@ class MyfavScreen extends StatelessWidget {
                                               "${controller.myfavs[index].itemsName}",
                                               style: const TextStyle(fontSize: 23, color: Appcolors.primarycolor, fontWeight: FontWeight.bold),
                                             ),
-                                            Text(
-                                              "${controller.myfavs[index].itemsDesc}",
-                                              textAlign: TextAlign.center,
-                                              style: const TextStyle(color: Appcolors.night2, fontSize: 16),
+                                            SizedBox(height: 10),
+                                            Row(
+                                              mainAxisAlignment: MainAxisAlignment.center,
+                                              children: [
+                                                Icon(Icons.timer_outlined),
+                                                SizedBox(width: 5),
+                                                Text(
+                                                  "${controller.dileverytime} minutes",
+                                                  textAlign: TextAlign.center,
+                                                  style: const TextStyle(color: Appcolors.grey4, fontSize: 20, fontWeight: FontWeight.bold),
+                                                ),
+                                              ],
                                             ),
                                             const Spacer(),
                                             Container(
@@ -117,7 +125,7 @@ class MyfavScreen extends StatelessWidget {
                                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                   children: [
                                                     Text(
-                                                      "${controller.myfavs[index].itemsPrice} \$",
+                                                      "${controller.myfavs[index].itemsPrice}\$",
                                                       style: const TextStyle(fontSize: 23, color: Appcolors.primarycolor, fontWeight: FontWeight.bold),
                                                     ),
                                                     //

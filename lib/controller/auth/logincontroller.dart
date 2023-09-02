@@ -9,6 +9,8 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../core/functions/fcmconfig.dart';
+
 abstract class LogInController extends GetxController {
   login();
   gotosignup();
@@ -63,8 +65,10 @@ class LogInControllerImp extends LogInController {
               response['data']['users_phone'],
             );
             String id = "${myServices.sharedPrefs!.getString("id")}";
+            await permissionNotification();
             FirebaseMessaging.instance.subscribeToTopic("users");
             FirebaseMessaging.instance.subscribeToTopic("users$id");
+
             Get.offAllNamed(Approutes.homescreen);
           } catch (e) {
             print("(???????????????????????????????$e)");
@@ -73,6 +77,7 @@ class LogInControllerImp extends LogInController {
             }, () {
               Get.back();
             });
+            update();
           }
         } else if (response["message"] == "xapprove") {
           reqeuststate = requeststatus.xapprove;
@@ -81,6 +86,7 @@ class LogInControllerImp extends LogInController {
           }, () {
             Get.toNamed(Approutes.verifyemailsignup, arguments: {"email": email!.text});
           });
+          update();
         } else if (response["message"] == "xwrong") {
           reqeuststate = requeststatus.failaur;
           defultDialog("Warning!!", "Email or passowrd is not correct", "Cancle", "Try Again", 60, 10, () {
@@ -88,18 +94,21 @@ class LogInControllerImp extends LogInController {
           }, () {
             Get.back();
           });
+          update();
         } else {
           reqeuststate == requeststatus.unknown2;
+          update();
         }
       } else if (reqeuststate == requeststatus.unknown) {
         defultDialog("Warning!!", "Sorry it is unkown error try later", "Cancle", "Try Again", 60, 10, () {
           Get.offAllNamed(Approutes.login);
+          update();
         }, () {
           Get.back();
         });
       }
       print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ $reqeuststate");
-      update();
+      //update();
     }
   }
 

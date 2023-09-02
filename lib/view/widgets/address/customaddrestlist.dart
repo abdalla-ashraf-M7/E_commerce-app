@@ -22,7 +22,7 @@ class CustomAddressList extends GetView<PaymentMethodControllerImp> {
         const SizedBox(height: 5),
         Container(
           // color: Colors.amber,
-          height: 270,
+          height: 250,
           child: ListView(
             shrinkWrap: true,
             children: [

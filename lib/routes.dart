@@ -22,6 +22,7 @@ import 'package:e_commerce/view/screens/onboarding/onboardingscreen.dart';
 import 'package:e_commerce/view/screens/orders/archive.dart';
 import 'package:e_commerce/view/screens/orders/myorders.dart';
 import 'package:e_commerce/view/screens/orders/orderdetails.dart';
+import 'package:e_commerce/view/screens/orders/ordertrackingscreen.dart';
 import 'package:e_commerce/view/screens/orders/paymentmethodscreen.dart';
 import 'package:get/get.dart';
 
@@ -52,5 +53,6 @@ List<GetPage<dynamic>> routes = [
   GetPage(name: Approutes.notifications, page: () => NotificationScreen()),
   GetPage(name: Approutes.orderdetails, page: () => OrderDetailsScreen()),
   GetPage(name: Approutes.archive, page: () => ArchiveScreen()),
+  GetPage(name: Approutes.trackOrder, page: () => OrderTrackingScreen()),
   //GetPage(name: "/", page: () => const PaymentMethodScreen()),
 ];

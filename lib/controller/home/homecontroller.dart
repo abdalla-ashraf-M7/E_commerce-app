@@ -34,6 +34,8 @@ class HomeControllerImp extends HomeController {
   viewData() async {
     requeststate = requeststatus.loading;
     update();
+    cats.clear();
+    items.clear();
     var response = await homeData.getData();
     print("333333333333333333333333$response");
     requeststate = handlingData(response);
@@ -56,6 +58,10 @@ class HomeControllerImp extends HomeController {
       }
     } else {}
     update();
+  }
+
+  refreshData() {
+    viewData();
   }
 
   @override

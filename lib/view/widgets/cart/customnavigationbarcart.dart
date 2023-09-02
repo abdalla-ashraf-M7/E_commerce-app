@@ -182,7 +182,7 @@ class CustomBottomNavigationCart extends StatelessWidget {
                   children: [
                     const Text("Total Price", style: TextStyle(fontSize: 25)),
                     Text(
-                      "${(priceafterdiscountAndcopoun + shipping).toStringAsFixed(4)} \$",
+                      "${(priceafterdiscountAndcopoun + shipping).toStringAsFixed(2)} \$",
                       style: const TextStyle(fontSize: 30, color: Appcolors.primarycolor, fontWeight: FontWeight.bold), //tostring this make the dicimals be just 4 not more
                     ),
                   ],

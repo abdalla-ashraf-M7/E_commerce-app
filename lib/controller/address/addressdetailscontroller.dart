@@ -63,6 +63,6 @@ class AddressDetailsControllerImp extends AddressDetailsController {
     } else {
       requeststate = requeststatus.serverFailaur;
     }
-    update();
+    // update();
   }
 }

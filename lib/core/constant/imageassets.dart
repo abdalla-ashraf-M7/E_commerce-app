@@ -16,4 +16,7 @@ class Appimageassets {
   static const String server = "assets/lottie/server.json";
   static const String offline = "assets/lottie/offline.json";
   static const String nodata = "assets/lottie/nodata.json";
+
+  //sounds
+  static const String notification = "assets/sounds/notification.wav";
 }

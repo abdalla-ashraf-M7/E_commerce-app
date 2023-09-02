@@ -52,37 +52,50 @@ class HomePage extends StatelessWidget {
             ]),
             const SizedBox(height: 20),
             controller.isSearch
-                ? ListView.builder(
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    itemCount: controller.searchlist.length,
-                    itemBuilder: (BuildContext context, int index) {
-                      return CustomCardSearch(
-                          onCardTap: () {
-                            controller.gotoitemsdetails(controller.searchlist[index]);
-                          },
-                          imagename: "${controller.searchlist[index].itemsImage}",
-                          itemname: "${controller.searchlist[index].itemsName}",
-                          itemprice: "${controller.searchlist[index].itemsPrice} \$");
-                    },
-                  )
-                : HandlinDataView(
-                    requeststat: controller.requeststate,
-                    widget: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                ? RefreshIndicator(
+                    child: ListView(
+                      shrinkWrap: true,
                       children: [
-                        CustomOfferBoard(text1: controller.titlehome, text2: controller.bodyhome),
-                        const SizedBox(height: 15),
-                        Text("Categories", style: Theme.of(context).textTheme.displayLarge),
-                        const SizedBox(height: 10),
-                        const CustomListViewCats(),
-                        const SizedBox(height: 15),
-                        Text("Top Sales", style: Theme.of(context).textTheme.displayLarge),
-                        const SizedBox(height: 5),
-                        const CustomListViewItems(),
+                        ListView.builder(
+                          shrinkWrap: true,
+                          physics: const NeverScrollableScrollPhysics(),
+                          itemCount: controller.searchlist.length,
+                          itemBuilder: (BuildContext context, int index) {
+                            return CustomCardSearch(
+                                onCardTap: () {
+                                  controller.gotoitemsdetails(controller.searchlist[index]);
+                                },
+                                imagename: "${controller.searchlist[index].itemsImage}",
+                                itemname: "${controller.searchlist[index].itemsName}",
+                                itemprice: "${controller.searchlist[index].itemsPrice} \$");
+                          },
+                        ),
                       ],
                     ),
-                  )
+                    onRefresh: () async {
+                      controller.viewSearch();
+                    })
+                : RefreshIndicator(
+                    child: HandlinDataView(
+                      requeststat: controller.requeststate,
+                      widget: ListView(
+                        shrinkWrap: true,
+                        children: [
+                          CustomOfferBoard(text1: controller.titlehome, text2: controller.bodyhome),
+                          const SizedBox(height: 15),
+                          Text("Categories", style: Theme.of(context).textTheme.displayLarge),
+                          const SizedBox(height: 10),
+                          const CustomListViewCats(),
+                          const SizedBox(height: 15),
+                          Text("Top Sales", style: Theme.of(context).textTheme.displayLarge),
+                          const SizedBox(height: 5),
+                          const CustomListViewItems(),
+                        ],
+                      ),
+                    ),
+                    onRefresh: () async {
+                      controller.refreshData();
+                    })
           ],
         ),
       ),

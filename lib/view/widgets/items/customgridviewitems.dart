@@ -19,7 +19,7 @@ class CustomGridViewItems extends StatelessWidget {
         builder: (controller) => GridView.builder(
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2, childAspectRatio: .7),
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2, childAspectRatio: .65),
               itemCount: controller.pickedOne.length,
               itemBuilder: (BuildContext context, int index) {
                 controllerfav.isfav[controller.pickedOne[index]['items_id']] = controller.pickedOne[index]['favs'];
@@ -80,6 +80,7 @@ class ItemsInItems extends GetView<ItemsControllerImp> {
                   ),
                   SizedBox(height: 10),
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Icon(Icons.timer_outlined),
                       SizedBox(width: 5),
@@ -101,14 +102,14 @@ class ItemsInItems extends GetView<ItemsControllerImp> {
                         children: [
                           itemsModel.itemsDiscount == '0'
                               ? Text(
-                                  "${itemsModel.itemsPrice} \$",
+                                  "${itemsModel.itemsPrice}\$",
                                   style: const TextStyle(fontSize: 23, color: Appcolors.primarycolor, fontWeight: FontWeight.bold),
                                 )
                               : Row(
                                   mainAxisSize: MainAxisSize.min,
                                   children: [
                                     Text(
-                                      "${itempriceIntForm - (itempriceIntForm * itemDiscountIntForm / 100)} \$",
+                                      "${itempriceIntForm - (itempriceIntForm * itemDiscountIntForm / 100)}\$",
                                       textAlign: TextAlign.center,
                                       style: const TextStyle(fontSize: 23, color: Appcolors.primarycolor, fontWeight: FontWeight.bold),
                                     ),
@@ -117,7 +118,7 @@ class ItemsInItems extends GetView<ItemsControllerImp> {
                                       // color: Colors.amber,
                                       //alignment: AlignmentDirectional.bottomEnd,
                                       child: Text(
-                                        "${itemsModel.itemsPrice} \$",
+                                        "${itemsModel.itemsPrice}\$",
                                         textAlign: TextAlign.center,
                                         style: const TextStyle(decoration: TextDecoration.lineThrough, decorationThickness: 2, decorationColor: Appcolors.primarycolor, fontSize: 20),
                                       ),

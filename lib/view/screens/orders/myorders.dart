@@ -17,26 +17,30 @@ class MyOrdersScreen extends StatelessWidget {
       body: GetBuilder<MyOrdersControllerImp>(
           builder: (controller) => HandlinDataView(
               requeststat: controller.requeststate,
-              widget: ListView(
-                children: [
-                  ListView.separated(
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    itemCount: controller.data.length,
-                    separatorBuilder: (BuildContext context, int index) {
-                      return const SizedBox(
-                        height: 5,
-                      );
-                    },
-                    itemBuilder: (BuildContext context, int index) {
-                      return CustomCardOrders(
-                        ordersModel: controller.data[index],
-                        i: index,
-                      );
-                    },
+              widget: RefreshIndicator(
+                  child: ListView(
+                    children: [
+                      ListView.separated(
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        itemCount: controller.data.length,
+                        separatorBuilder: (BuildContext context, int index) {
+                          return const SizedBox(
+                            height: 5,
+                          );
+                        },
+                        itemBuilder: (BuildContext context, int index) {
+                          return CustomCardOrders(
+                            ordersModel: controller.data[index],
+                            i: index,
+                          );
+                        },
+                      ),
+                    ],
                   ),
-                ],
-              ))),
+                  onRefresh: () async {
+                    controller.refreshMyOrderspage();
+                  }))),
     );
   }
 }

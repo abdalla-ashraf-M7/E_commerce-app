@@ -1,7 +1,7 @@
 import 'package:e_commerce/core/constant/approutes.dart';
 import 'package:e_commerce/data/datasource/remote/orders/ordersdata.dart';
 import 'package:get/get.dart';
-
+import 'package:intl/intl.dart';
 import '../../core/class/requeststatus.dart';
 import '../../core/functions/handlingdata.dart';
 import '../../core/services/services.dart';
@@ -16,6 +16,7 @@ abstract class PaymentMethodController extends GetxController {
   whichAddress(String val);
   checkOut();
   gotoAddNewAddress();
+  getCurrentTime();
 }
 
 class PaymentMethodControllerImp extends PaymentMethodController {
@@ -100,6 +101,7 @@ class PaymentMethodControllerImp extends PaymentMethodController {
     "dileveryprice": "10",
     "copounid": rCopounId.toString(),
     "copoundiscount": rCopounDiscount.toString(),
+    "time": getCurrentTime()
   };
   @override
   checkOut() async {
@@ -114,6 +116,7 @@ class PaymentMethodControllerImp extends PaymentMethodController {
     }
     requeststate = requeststatus.loading;
     update();
+    print("CurrentTime:${getCurrentTime()}");
     var response = await orderData.insertOrder(mapdatatocheckout);
     print("8888888888888checkoutPaymetnMethod888888888$response");
     requeststate = handlingData(response);
@@ -128,6 +131,13 @@ class PaymentMethodControllerImp extends PaymentMethodController {
       requeststate = requeststatus.serverFailaur;
     }
 
-    update();
+    // update();
+  }
+
+  @override
+  getCurrentTime() {
+    DateTime now = DateTime.now();
+    String formattedTime = DateFormat('yyyy-MM-dd HH:mm:ss').format(now);
+    return formattedTime;
   }
 }

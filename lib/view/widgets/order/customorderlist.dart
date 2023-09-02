@@ -2,7 +2,6 @@ import 'package:e_commerce/core/functions/orderrating.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:jiffy/jiffy.dart';
-
 import '../../../controller/order/myorderscontroller.dart';
 import '../../../core/constant/colors.dart';
 import '../../../data/model/ordersmodel.dart';
@@ -15,7 +14,7 @@ class CustomCardOrders extends StatelessWidget {
   Widget build(BuildContext context) {
     MyOrdersControllerImp controller = Get.put(MyOrdersControllerImp());
     return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 10),
+      margin: const EdgeInsets.symmetric(horizontal: 5),
       child: Card(
         shape: const ContinuousRectangleBorder(side: BorderSide(color: Appcolors.primarycolor)),
         child: Container(
@@ -63,8 +62,8 @@ class CustomCardOrders extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  "Total Price: ${ordersModel.ordersTotalprice} \$",
-                  style: const TextStyle(fontSize: 23),
+                  "Total Price:${ordersModel.ordersTotalprice}\$",
+                  style: const TextStyle(fontSize: 22),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -102,8 +101,45 @@ class CustomCardOrders extends StatelessWidget {
                               ],
                             ),
                     const SizedBox(
-                      width: 10,
+                      width: 5,
                     ),
+                    /*    if (ordersModel.ordersStatus == "3" && ordersModel.ordersType == "1")
+                      Row(
+                        children: [
+                          SizedBox(
+                            width: 105,
+                            child: MaterialButton(
+                                height: 38,
+                                color: Appcolors.blue2,
+                                onPressed: () {
+                                  controller.goToTrakingOrders(ordersModel);
+                                },
+                                child: const Text(
+                                  "Tracking",
+                                  style: TextStyle(fontSize: 20, color: Appcolors.white),
+                                )),
+                          ),
+                          const SizedBox(width: 8),
+                        ],
+                      ), */
+                    if (ordersModel.ordersStatus == "3" && ordersModel.ordersType == "1")
+                      Row(
+                        children: [
+                          InkWell(
+                            onTap: () {
+                              controller.goToTrakingOrders(ordersModel);
+                            },
+                            child: Icon(
+                              Icons.location_on,
+                              size: 40,
+                              color: Appcolors.blue2,
+                            ),
+                          ),
+                          SizedBox(
+                            width: 8,
+                          ),
+                        ],
+                      ),
                     MaterialButton(
                         height: 38,
                         color: Appcolors.primarycolor,
@@ -112,7 +148,7 @@ class CustomCardOrders extends StatelessWidget {
                         },
                         child: const Text(
                           "Detatils",
-                          style: TextStyle(fontSize: 23, color: Appcolors.white),
+                          style: TextStyle(fontSize: 20, color: Appcolors.white),
                         ))
                   ],
                 )

@@ -1,6 +1,7 @@
 import 'package:e_commerce/core/constant/apptheme.dart';
 import 'package:e_commerce/core/functions/fcmconfig.dart';
 import 'package:e_commerce/core/services/services.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
@@ -23,24 +24,25 @@ class LanguageController extends GetxController {
     LocationPermission permission;
     serviceEnabled = await Geolocator.isLocationServiceEnabled();
     if (!serviceEnabled) {
-      return Get.snackbar("Warning", "You need to Open the Location Option in you phone");
+      return Get.defaultDialog(title: "Warning", middleText: "Please enable the location serivice in your phone");
     }
     permission = await Geolocator.checkPermission();
     if (permission == LocationPermission.denied) {
       permission = await Geolocator.requestPermission();
       if (permission == LocationPermission.denied) {
-        return Get.snackbar("Warning", "You Can't use the app if you deny the location permission");
+        return Get.defaultDialog(title: "Warning", middleText: "You can't use this service without giving us the location permission");
       }
     }
     if (permission == LocationPermission.deniedForever) {
-      return Get.snackbar("Warning", "you Deny the location ForEver");
+      return Get.defaultDialog(title: "Warning", middleText: "You denied the location permission for ever Please go to settings and give us location permission");
     }
   }
 
   @override
   void onInit() {
-    permissionNotification();
     fcmConfig();
+    FirebaseMessaging.onBackgroundMessage(backgroundMessageHandler);
+    permissionNotification();
     requestPerLofcation();
     if (myServices.sharedPrefs!.getString("lang") == "ar") {
       langauge = const Locale("ar");

@@ -80,10 +80,21 @@ dependencies:
   lottie: ^2.6.0
   flutter_ringtone_player: ^3.2.0
   rating_dialog: ^2.0.4
+  just_audio: ^0.9.34
 
 dev_dependencies:
+  flutter_launcher_icons: "^0.13.1"
+  flutter_native_splash: ^2.3.2
   flutter_test:
     sdk: flutter
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/images/newlogo.png"
+flutter_native_splash:
+  color: "#FFFFFF"
+  image: assets/images/splash.png
+  android_gravity: center
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
@@ -107,6 +118,7 @@ flutter:
     - assets/images/
     - assets/images/others/
     - assets/lottie/
+    - assets/sounds/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

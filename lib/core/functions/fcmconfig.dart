@@ -1,11 +1,11 @@
 import 'package:e_commerce/controller/order/myorderscontroller.dart';
+import 'package:e_commerce/core/constant/imageassets.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:flutter_ringtone_player/flutter_ringtone_player.dart';
 import 'package:get/get.dart';
+import 'package:just_audio/just_audio.dart';
 
 permissionNotification() async {
   FirebaseMessaging messaging = FirebaseMessaging.instance;
-
   NotificationSettings settings = await messaging.requestPermission(
     alert: true,
     announcement: false,
@@ -26,14 +26,24 @@ permissionNotification() async {
 }
 
 fcmConfig() {
-  FirebaseMessaging.onMessage.listen((message) {
+  AudioPlayer audioPlayer = AudioPlayer();
+  FirebaseMessaging.onMessage.listen((message) async {
     print("==============================notification===========");
     print(message.notification!.title);
     print(message.notification!.body);
-    FlutterRingtonePlayer.playNotification();
+    await audioPlayer.setAsset(Appimageassets.notification);
     Get.snackbar("${message.notification!.title}", "${message.notification!.body}");
+    await audioPlayer.play();
+
     refrechNotificationPage(message.data);
   });
+}
+
+Future<void> backgroundMessageHandler(RemoteMessage message) async {
+  print("==============================Background notification===========");
+
+  print("Handling a background message: ${message.notification!.title}");
+  print("Handling a background message: ${message.notification!.body}");
 }
 
 refrechNotificationPage(Map data) {
